@@ -5,7 +5,7 @@ K3_vanus,1,Alaealine (17 või noorem),<17
 K3_vanus,2,18-29,18-29
 K3_vanus,3,30-49,30-49
 K3_vanus,4,50-64,50-64
-K3_vanus,5,65 või vanem,65+
+K3_vanus,5,65 või vanem,65>
 K4_sugu,1,Mees,Mees
 K4_sugu,2,Naine,Naine
 K4_sugu,3,Ei soovi määratleda,Määratlemata
