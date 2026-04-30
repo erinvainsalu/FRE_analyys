@@ -132,7 +132,7 @@ TBD
 
 ### Andmemudel
 
-TBD
+<img width="661" height="3182" alt="FRE andmemudel" src="data_model/FRE_andmemudel.png" />
 
 ### Andmesõnastik
 
