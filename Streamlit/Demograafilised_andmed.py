@@ -16,6 +16,8 @@ from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm, l
 
 st.title('Vastajate demograafilised andmed')
 
+st.write(os.getcwd())
+
 # Määra graafikute stiil
 style = maara_raporti_stiil()
 
