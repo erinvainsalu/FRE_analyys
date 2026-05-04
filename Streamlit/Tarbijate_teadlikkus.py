@@ -18,10 +18,10 @@ from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm, l
 style = maara_raporti_stiil()
 
 # Impordi andmed puhastamise käigus loodud CVS-st
-data = pd.read_csv('Data/cleaned_data.csv')
+data = pd.read_csv('data/cleaned_data.csv')
 
 # Impordi vastuste koodid
-koodid = pd.read_csv('Data/vastuste_koodid.csv')
+koodid = pd.read_csv('data/vastuste_koodid.csv')
 
 # Kasuta laia paigutust
 #st.set_page_config(layout='wide')

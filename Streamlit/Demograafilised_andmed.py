@@ -22,10 +22,10 @@ st.write(os.getcwd())
 style = maara_raporti_stiil()
 
 # Impordi andmed puhastamise käigus loodud CVS-st
-data = pd.read_csv('Data/cleaned_data.csv')
+data = pd.read_csv('data/cleaned_data.csv')
 
 # Impordi vastuste koodid
-koodid = pd.read_csv('Data/vastuste_koodid.csv')
+koodid = pd.read_csv('data/vastuste_koodid.csv')
 
 # Asenda väheste vastajate arvuga maakonnad valikuga muu
 data_puhastatud = data.copy()
