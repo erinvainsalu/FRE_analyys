@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
 import numpy as np
+import math
 
 #custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 #sns.set_theme(style = 'whitegrid', rc = custom_params)
@@ -52,6 +53,15 @@ def maara_raporti_stiil():
         ],
         'PRIMARY_COLOR': '#3B5BA5'
     }
+
+# Defineeri ühtne graafikute stiil
+def create_fig(figsize=(7, 5)):
+    fig, ax = plt.subplots(figsize=figsize)
+
+    # ühtne spacing kõigile
+    fig.subplots_adjust(bottom=0.2)
+
+    return fig, ax
 
 def leia_sildi_mapping(df_koodid, tunnus):
      return (
@@ -150,7 +160,7 @@ def loo_tulpdiagramm(df, title, style_config, hue=None, percent=True, sort=False
     #print('Vastuste jaotus:')
     #print(df.to_string(index=False))
     
-    fig, ax = plt.subplots(figsize=(7, 5))
+    fig, ax = create_fig()
 
     # Loo diagramm
     sns.barplot(
@@ -205,7 +215,7 @@ def loo_hor_tulpdiagramm(df, title, style_config, percent=True, sort=False):
     #print('Vastuste jaotus:')
     #print(df.to_string(index=False))
     
-    fig, ax = plt.subplots(figsize=(7, 5))
+    fig, ax = create_fig()
 
     # Loo diagramm
     sns.barplot(
@@ -261,7 +271,7 @@ def loo_stacked_tulpdiagramm(df, title, style_config, normalize=True):
     #print(df.sum(axis=1))
 
     # Loo stacked tulpdiagramm
-    fig, ax = plt.subplots(figsize=(7, 5))
+    fig, ax = create_fig()
     
     df_plot.plot(
         kind='bar',
@@ -295,13 +305,18 @@ def loo_stacked_tulpdiagramm(df, title, style_config, normalize=True):
             fontsize=9
         )
 
+    max_cols = 4  # mitu legendi elementi maksimaalselt ühel real
+    ncol = math.ceil(len(df.columns) / 2)
+
     # Legendi stiil
+    ncol = math.ceil(len(df.columns) / 2)  # jagab kaheks reaks
     ax.legend(
         bbox_to_anchor=(0.5, -0.1),
         loc="upper center",
         fontsize=9,
-        #frameon=False,
-        ncol=len(df.columns) # kuva kõik nimetused ühel real
+        ncol=ncol,
+        columnspacing=1.2,
+        handletextpad=0.5
     )
 
     # Lisa diagrammile x-telje alla vastuste arvudele vastavad sildid
@@ -340,7 +355,7 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=T
     #print(df.sum(axis=1))
 
     # Loo stacked tulpdiagramm
-    fig, ax = plt.subplots(figsize=(7, 6))
+    fig, ax = create_fig()
     
     df_plot.plot(
         kind="barh",
@@ -380,30 +395,32 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=T
         )
 
     # Legendi stiil
+    ncol = math.ceil(len(df.columns) / 2)  # jagab kaheks reaks
     ax.legend(
         bbox_to_anchor=(0.5, -0.1),
         loc="upper center",
         fontsize=9,
-        #frameon=False,
-        ncol=len(df.columns) # kuva kõik nimetused ühel real
+        ncol=ncol,
+        columnspacing=1.2,
+        handletextpad=0.5
     )
 
     # Lisa absoluutarvude sildid vasakule
     totals = df.sum(axis=1)
     
     # Lisa diagrammile y-telje juurde vastuste arvudele vastavad sildid
-    for i, (grupp, count) in enumerate(totals.items()):
-        ax.text(
-            -0.03,
-            i-0.5,
-            f'(n={count})',
-            transform=ax.get_yaxis_transform(),
-            ha='right',
-            va='center',
-            fontsize=8,
-            style='italic',
-            color='gray'
-        )
+    #for i, (grupp, count) in enumerate(totals.items()):
+    #    ax.text(
+    #        -0.03,
+    #        i-0.5,
+    #        f'(n={count})',
+    #        transform=ax.get_yaxis_transform(),
+    #        ha='right',
+    #        va='center',
+    #        fontsize=8,
+    #        style='italic',
+    #        color='gray'
+    #    )
 
     # --- clean grid ---
     #ax.grid(axis='x', linestyle='--', alpha=0.4)
@@ -413,7 +430,7 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=T
 
     return fig, ax
 
-def loo_heatmap(df, title, cmap="YlGn", fmt='.0f', normalize=None, figsize=(7, 5)):
+def loo_heatmap(df, title, cmap="YlGn", fmt='.0f', normalize=None):
     """
     Plot a heatmap from a pandas DataFrame.
 
@@ -421,10 +438,7 @@ def loo_heatmap(df, title, cmap="YlGn", fmt='.0f', normalize=None, figsize=(7, 5
         df (pandas.DataFrame): Input data
         title (str): Plot title
         cmap (str): Matplotlib colormap
-        annotate (bool): Show values inside cells
         fmt (str): Annotation format (e.g. "d", ".1f")
-        figsize (tuple): Figure size
-        cbar (bool): Show colorbar
     """
 
     values = df.values
@@ -439,7 +453,7 @@ def loo_heatmap(df, title, cmap="YlGn", fmt='.0f', normalize=None, figsize=(7, 5
 
     rows, cols = df.index, df.columns
 
-    fig, ax = plt.subplots(figsize=figsize)
+    fig, ax = create_fig()
 
     # Heatmap
     im = ax.imshow(values, cmap=cmap, aspect="auto")

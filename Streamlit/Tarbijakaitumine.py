@@ -11,7 +11,7 @@ parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
 
 # Impordi tabelite ja graafikute joonistamiseks vajalikud funktsioonid
-from Python.visuaalide_abilised import maara_raporti_stiil
+from Python.visuaalide_abilised import maara_raporti_stiil, leia_sildi_mapping
 from Python.visuaalide_abilised import sagedustabel, mitmikvastuse_sagedustabel, loo_risttabel
 from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm, loo_stacked_tulpdiagramm, loo_hor_stacked_tulpdiagramm, loo_heatmap
 
@@ -111,66 +111,30 @@ tab2.dataframe(kaitumine_elukoht,
 st.write(':red[*To-be-done*]')
 st.write('**Vastajate hinnang teadmistele vs sorteerimiskäitumine**')
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
-# Hinnang enda teadmistele × teadlikkus seadusest
+# Hinnang enda teadmistele × sorteerimiskäitumine
 teadmised_sorteerimine = loo_risttabel(sorteerimine_puhas, koodid, 'K8_teadmiste_hinnang', 'K7_sorteerimiskaitumine', normalize=True)
-# Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
 
 # Loo heatmap
-fig, ax = loo_heatmap(
+fig, ax = plt.subplots()
+sns.heatmap(
     teadmised_sorteerimine,
-    title=''
+    cmap='coolwarm_r',
+    linewidths=1,
+    #linecolor='gray',
+    annot=True
+    #square= True
 )
+plt.xticks(rotation=45)
+ax.set(xlabel=None)
+ax.set(ylabel=None)
+
 tab1.pyplot(fig)
 tab2.dataframe(teadmised_sorteerimine,
     column_config={'K8_teadmiste_hinnang': ''}
 )
 
-fig, ax = plt.subplots()
-sns.heatmap(
-    teadmised_sorteerimine,
-    cmap='coolwarm_r',
-    linewidths=1,
-    #linecolor='gray',
-    annot=True
-    #square= True
-)
-plt.xticks(rotation=45)
-ax.set(xlabel=None)
-ax.set(ylabel=None)
-
-# Display the plot in Streamlit
-st.pyplot(fig)
-
-teadlikkus_sorteerimine = loo_risttabel(sorteerimine_puhas, koodid, 'K11_teadlikkus', 'K7_sorteerimiskaitumine', normalize=True)
-# Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
-
-# Loo heatmap
-fig, ax = loo_heatmap(
-    teadlikkus_sorteerimine,
-    title=''
-)
-tab1.pyplot(fig)
-tab2.dataframe(teadlikkus_sorteerimine,
-    column_config={'K11_teadlikkus': ''}
-)
-
-fig, ax = plt.subplots()
-sns.heatmap(
-    teadlikkus_sorteerimine,
-    cmap='coolwarm_r',
-    linewidths=1,
-    #linecolor='gray',
-    annot=True
-    #square= True
-)
-plt.xticks(rotation=45)
-ax.set(xlabel=None)
-ax.set(ylabel=None)
-
-# Display the plot in Streamlit
-st.pyplot(fig)
-
 st.write(':red[*To-be-done*]')
+st.write('Kas vastajad käituvad vastavalt oma väärtushinnangutele?')
 st.write('**Vastajate hinnang probleemi tõsidusele vs sorteerimiskäitumine**')
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 # Hinnang enda teadmistele × teadlikkus seadusest
@@ -196,7 +160,6 @@ tab1.pyplot(fig)
 tab2.dataframe(tosidus_sorteerimine,
     column_config={'K9_probleemi_tosidus': ''}
 )
-
 
 ###################################################
 # TEKSTIILIDE KOGUS                               #
@@ -227,10 +190,122 @@ tab2.dataframe(loobutud_tekstiilid,
     hide_index=True)
 
 ###################################################
-# MITEEVAJALIKUD TEKSTIILID                       #
+# ULTRAKIIRMOE OSTMINE                            #
+###################################################
+st.write('## Ultrakiirmoe ostmise harjumus')
+st.write(':red[*To-be-done*]')
+st.write('Lisaküsimusena oli vastajatel võimalik täpsustada kas nad ostavad ultrakiirmoodi. Vastuseid kokku ???')
+
+st.write('**Vastajate jaotus loobutud ultrakiirmoe soetamise lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel'])
+# Leia vastajate arv teadlikkuse alusel
+kiirmood = sagedustabel(data_puhastatud, koodid, 'K41_ultrakiirmoe_ostmine')
+
+# Kuva tulpdiagramm
+fig, ax = loo_tulpdiagramm(
+    kiirmood,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(kiirmood,
+    column_order=('vastus_lyhike', 'vastuste_arv', 'protsent_str'),
+    column_config={
+        'vastus_lyhike': st.column_config.TextColumn('Vastus'),
+        'vastuste_arv': st.column_config.NumberColumn('Vastuste arv', width=20),
+        'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
+    },
+    hide_index=True)
+
+st.write(':red[*To-be-done*]')
+
+st.write('**Ultrakiirmoe ostmise sagedus vanusegruppide lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Eemalda sorteerimiskäitumine, kus valikuks Null-kulu eluviis, muu
+# sorteerimine_puhas = data_puhastatud[data_puhastatud['K7_sorteerimiskaitumine'].isin([1, 2, 3, 4])]
+
+# sorteerimiskaitumine_grupeeritud = sagedustabel(sorteerimine_puhas, sort_koodid, 'K7_sorteerimiskaitumine', use_full_codebook=False)
+#print(f'Vastanutest {sorteerimiskaitumine_grupeeritud.loc[sorteerimiskaitumine_grupeeritud['kood']==3, 'protsent_str'].to_string(index=False)} sorteerib 3-s või enamas kategoorias')
+
+# Käitumine vanuse alusel
+kiirmood_vanus = loo_risttabel(data_puhastatud, koodid, 'K3_vanus', 'K41_ultrakiirmoe_ostmine', normalize=True)
+
+# Kuva tulpdiagramm
+fig, ax = loo_stacked_tulpdiagramm(
+    kiirmood_vanus,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(kiirmood_vanus,
+    column_config={'K3_vanus': ''}
+)
+
+###################################################
+# RÕIVASTE OSTMISSAGEDUS                          #
+###################################################
+st.write('## Uute rõivaste ostmissagedus')
+st.write(':red[*To-be-done*]')
+st.write('Lisaküsimusena oli vastajatel võimalik täpsustada kui sageli nad ostavad uusi rõivaid. Vastuseid kokku ???')
+
+st.write('**Vastajate jaotus loobutud rõivaste soetamise sageduse lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel'])
+# Leia vastajate arv teadlikkuse alusel
+ostmissagedus = sagedustabel(data_puhastatud, koodid, 'K40_ostmissagedus')
+
+# Kuva tulpdiagramm
+fig, ax = loo_tulpdiagramm(
+    ostmissagedus,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(ostmissagedus,
+    column_order=('vastus_lyhike', 'vastuste_arv', 'protsent_str'),
+    column_config={
+        'vastus_lyhike': st.column_config.TextColumn('Vastus'),
+        'vastuste_arv': st.column_config.NumberColumn('Vastuste arv', width=20),
+        'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
+    },
+    hide_index=True)
+
+st.write(':red[*To-be-done*]')
+
+st.write('**Uute rõivaste ostmise sagedus vanusegruppide lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Eemalda sorteerimiskäitumine, kus valikuks Null-kulu eluviis, muu
+# sorteerimine_puhas = data_puhastatud[data_puhastatud['K7_sorteerimiskaitumine'].isin([1, 2, 3, 4])]
+
+# sorteerimiskaitumine_grupeeritud = sagedustabel(sorteerimine_puhas, sort_koodid, 'K7_sorteerimiskaitumine', use_full_codebook=False)
+#print(f'Vastanutest {sorteerimiskaitumine_grupeeritud.loc[sorteerimiskaitumine_grupeeritud['kood']==3, 'protsent_str'].to_string(index=False)} sorteerib 3-s või enamas kategoorias')
+
+# Käitumine vanuse alusel
+sagedus_vanus = loo_risttabel(data_puhastatud, koodid, 'K3_vanus', 'K40_ostmissagedus', normalize=True)
+
+# Kuva tulpdiagramm
+fig, ax = loo_stacked_tulpdiagramm(
+    sagedus_vanus,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(sagedus_vanus,
+    column_config={'K3_vanus': ''}
+)
+
+###################################################
+# MITTEVAJALIKUD TEKSTIILID                       #
 ###################################################
 st.write('## Mittevajalikud tekstiilid')
 st.write('Mida võtad peamiselt ette rõivaste või kodutekstiilidega, mida enam ei vaja?')
+st.write(':red[KES VIIB OLMEPRÜGISSE???]')
+st.write(':red[KAS OLMEJÄÄTMESSE need, kes viivad olmejäätmetesse, ES VIIB OLMEPRÜGISSE???]')
 st.write(':red[*To-be-done*]')
 
 st.write('**Käitumine mittevajalikest tekstiilidest loobumisel**')
@@ -307,6 +382,40 @@ tab2.dataframe(kolbmatud,
         'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
     },
     hide_index=True)
+
+st.write('Kasutuskülbmatud tekstiilid tuleks viia jäätmejaama. ' \
+'Paljud need, kes on teadlikuse seadusest märkinud kõrgeks, viskavad siiski rõivad olmejäätmetesse või viivad riidekonteinerisse.')
+
+veerud = {
+    'K23_kasutuskolbmatud_tekstiilid_1': 'Rõivakonteiner',
+    'K23_kasutuskolbmatud_tekstiilid_2': 'Segaolmejäätmete konteiner',
+    'K23_kasutuskolbmatud_tekstiilid_3': 'Jäätmejaam',
+    'K23_kasutuskolbmatud_tekstiilid_4': 'Põletamine (kodus)',
+    'K23_kasutuskolbmatud_tekstiilid_5': 'Matmine',
+    'K23_kasutuskolbmatud_tekstiilid_6': 'Ei tea (kuna ei vastuta)',
+    'K23_kasutuskolbmatud_tekstiilid_7': 'Muu',
+}
+
+labelid = leia_sildi_mapping(koodid, 'K11_teadlikkus')
+
+teabeallikad = (
+    data_puhastatud[['K11_teadlikkus', *veerud]]
+    .groupby('K11_teadlikkus')
+    .sum()
+    .rename(columns=veerud)
+    .T
+)
+st.dataframe(teabeallikad, column_config=labelid)
+
+teabeallikad_pct = (teabeallikad.div(teabeallikad.sum(axis=1), axis=0) * 100).round(0)
+st.dataframe(teabeallikad_pct, column_config=labelid)
+
+fig, ax = loo_hor_stacked_tulpdiagramm(
+    teabeallikad,
+    '',
+    style
+)
+st.pyplot(fig)
 
 ###################################################
 # SOBIMATUD TEKSTIILID                            #
