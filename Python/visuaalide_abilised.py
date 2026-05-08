@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
+from matplotlib.colors import to_hex
 import seaborn as sns
 import numpy as np
 import math
@@ -12,7 +13,7 @@ def maara_raporti_stiil():
 
     sns.set_theme(style='whitegrid')
 
-    sns.set_palette(palette='Blues_r')
+    sns.set_palette(palette='coolwarm_r')
 
     plt.rcParams.update({
         # font
@@ -39,21 +40,8 @@ def maara_raporti_stiil():
     })
     
     return {
-        # Defineeri värvipalett
-    #PALETTE = ["#3B5BA5", "#55A868", "#C44E52", "#8172B3", "#CCB974"]
-    # PALETTE = ["#1B1F3B", "#00429D", "#006D5B", "#2E7D32", "#8E24AA", '#B71C1C', '#C05600', '#37474F'] # dark palette
-
-        'PALETTE': [
-            '#3B5BA5',  # blue (original)
-            '#2A9D8F',  # teal (clearly different from blue)
-            '#55A868',  # green (original)
-            '#C44E52',  # red (original anchor)
-            '#F4A261',  # muted orange
-            '#8172B3',  # purple (original)
-            '#8D6E63',  # muted brown
-            '#7F7F7F'   # neutral grey
-        ],
-        'PRIMARY_COLOR': '#3B5BA5'
+        'BAR_PALETTE': plt.get_cmap('coolwarm_r')(1.0),
+        'STACKED_BAR_PALETTE': 'coolwarm_r'
     }
 
 # Defineeri ühtne graafikute stiil
@@ -126,18 +114,18 @@ def mitmikvastuse_sagedustabel(df_data, df_koodid, tunnus):
     return tulemus
 
 # Loo kahe tunnuse risttabel
-def loo_risttabel(df, df_koodid, tunnus_rida, tunnus_veerg, normalize=False):
+def loo_risttabel(df_data, df_koodid, tunnus_rida, tunnus_veerg, normalize=False):
     if normalize:
         risttabel = pd.crosstab(
-            index=df[tunnus_rida],
-            columns=df[tunnus_veerg],
+            index=df_data[tunnus_rida],
+            columns=df_data[tunnus_veerg],
             normalize='index'
         ) * 100
         risttabel = risttabel.round(0)
     else:
         risttabel = pd.crosstab(
-            index=df[tunnus_rida],
-            columns=df[tunnus_veerg]
+            index=df_data[tunnus_rida],
+            columns=df_data[tunnus_veerg]
         )
     
     # Leia koodide tabelist koodidele vastavad nimetused ridade/veergude pealkirjadeks
@@ -151,13 +139,13 @@ def loo_risttabel(df, df_koodid, tunnus_rida, tunnus_veerg, normalize=False):
     return risttabel
 
 # Loo kahe tunnuse risttabel, kus üks tunnustest on mitmikvalikuga
-def loo_mitmikvastuse_risttabel(df_data, df_koodid, tunnus_multiselect, tunnus_single, normalize=False):
+def loo_mitmikvastuse_risttabel(df_data, df_koodid, tunnus_single, tunnus_multiselect, normalize=False):
     """
     Loo risttabel mitmikvastusega ja ühe valikvastusega tunnuse vahel.
     Tagastab risttabeli, kus read = mitmikvastuse valikud, veerud = ühe valikvastuse kategooriad
     """
     
-    # Leia mitmikvastuse veergude arv ja nimed
+    # eia mitmikvastuse veergude arv ja nimed
     ridade_arv = len(df_koodid[df_koodid['kysimus'] == tunnus_multiselect])
     multiselect_cols = [f'{tunnus_multiselect}_{i}' for i in range(1, ridade_arv + 1)]
     
@@ -168,7 +156,7 @@ def loo_mitmikvastuse_risttabel(df_data, df_koodid, tunnus_multiselect, tunnus_s
         .to_dict()
     )
     
-    # Loo veergude mapping
+    # Loo veergude mapping (K22_peamised_valjakutsed_1 -> sildile)
     veerud_mapping = {
         f'{tunnus_multiselect}_{kood}': label 
         for kood, label in multiselect_labels.items()
@@ -182,15 +170,18 @@ def loo_mitmikvastuse_risttabel(df_data, df_koodid, tunnus_multiselect, tunnus_s
         df_data[[tunnus_single, *multiselect_cols]]
         .groupby(tunnus_single)
         .sum()
-        .T  # Transponeeri: read = väljakutsed, veerud = vanuserühmad
-        .rename(index=veerud_mapping)  # Asenda veergude nimed siltidega
-        .rename(columns=single_labels)  # Asenda veergude nimed siltidega
     )
     
+    # Nimeta veerud ümber vastuse teksivariandiks
+    risttabel = risttabel.rename(columns=veerud_mapping)
+    
+    # Nimeta read ümber vastuse teksivariandiks
+    risttabel.index = risttabel.index.map(single_labels)
+        
     # Vajadusel teisenda protsentideks
     if normalize:
-        # Arvuta protsendid veergude lõikes (iga vanuserühma sees)
-        risttabel = (risttabel / risttabel.sum(axis=0) * 100).round(1)
+        # Protsendid ridade lõikes
+        risttabel = risttabel.div(risttabel.sum(axis=1), axis=0).mul(100).round(0)
     
     return risttabel
 
@@ -212,7 +203,7 @@ def loo_tulpdiagramm(df, title, style_config, hue=None, percent=True, sort=False
         x='vastus_lyhike',
         y='protsent' if percent else 'vastuste_arv', # kasutaja kas suhtarve või absoluutseid väärtuseid
         hue=hue,
-        color=style_config['PRIMARY_COLOR'],
+        color=style_config['BAR_PALETTE'],
         ax=ax
     )
     
@@ -266,7 +257,7 @@ def loo_hor_tulpdiagramm(df, title, style_config, percent=True, sort=False):
         data=df,
         x='protsent' if percent else 'vastuste_arv', # kasutaja kas suhtarve või absoluutseid väärtuseid
         y='vastus_lyhike',
-        color=style_config['PRIMARY_COLOR'],
+        color=style_config['BAR_PALETTE'],
         ax=ax
     )
     
@@ -314,13 +305,16 @@ def loo_stacked_tulpdiagramm(df, title, style_config, normalize=True):
     #print(f'Vastuste arv tunnuste kaupa:')
     #print(df.sum(axis=1))
 
+    # Leia veergude arvule vastav värvide jaotus
+    colors = plt.get_cmap(style_config['STACKED_BAR_PALETTE'])(np.linspace(0.2, 0.9, len(df.columns)))
+
     # Loo stacked tulpdiagramm
     fig, ax = create_fig()
     
     df_plot.plot(
         kind='bar',
         stacked=True,
-        #color=style_config['PALETTE'],
+        color=colors,
         ax=ax,
         width=0.8
     )
@@ -346,7 +340,7 @@ def loo_stacked_tulpdiagramm(df, title, style_config, normalize=True):
             container,
             labels=labels,
             label_type='center',
-            fontsize=9
+            fontsize=10
         )
 
     max_cols = 4  # mitu legendi elementi maksimaalselt ühel real
@@ -398,13 +392,16 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=F
     #print(f'Vastuste arv tunnuste kaupa:')
     #print(df.sum(axis=1))
 
+    # Leia veergude arvule vastav värvide jaotus
+    colors = plt.get_cmap(style_config['STACKED_BAR_PALETTE'])(np.linspace(0.25, 0.85, len(df.columns)))
+
     # Loo stacked tulpdiagramm
     fig, ax = create_fig()
     
     df_plot.plot(
         kind="barh",
         stacked=True,
-        #color=style_config['PALETTE'],
+        color=colors,
         ax=ax
     )
 
@@ -427,7 +424,7 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=F
     for container in ax.containers:
         labels = [
             f'{v*100:.0f}%' if (normalize and v*100 > 5)
-            else (f'{int(v)}' if not normalize and v > 0 else '')
+            else (f'{int(v)}' if not normalize and v > 5 else '')
             for v in container.datavalues
         ]
         
@@ -435,14 +432,14 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=F
             container,
             labels=labels,
             label_type='center',
-            fontsize=8
+            fontsize=10
         )
 
     # Legendi stiil
     ncol = math.ceil(len(df.columns) / 2)  # jagab kaheks reaks
     ax.legend(
         bbox_to_anchor=(0.5, -0.1),
-        loc="upper center",
+        loc='upper center',
         fontsize=9,
         ncol=ncol,
         columnspacing=1.2,
@@ -478,20 +475,24 @@ def loo_hor_stacked_tulpdiagramm(df, title, style_config, normalize=True, sort=F
 def loo_heatmap(df, title, cmap='coolwarm_r', fmt='.0f'):
     fig, ax = create_fig()
     
+    cmap = sns.color_palette(cmap, as_cmap=True)
+    colors = [to_hex(cmap(x)) for x in np.linspace(0.5, 1, 8)]
+
     # Loo diagramm
     sns.heatmap(
         data=df,
-        cmap=cmap,
+        cmap=colors,
         linewidths=1,
         #linecolor='gray',
-        annot=True
+        annot=df.astype(int).astype(str) + '%',
+        fmt=''
         #square= True
     )
 
     # Lisa pealkiri
     ax.set_title(title, weight='bold', loc='left', pad=15)
 
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=45, ha='right', rotation_mode='anchor')
     ax.set(xlabel=None)
     ax.set(ylabel=None)
 

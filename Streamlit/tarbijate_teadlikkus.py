@@ -1,23 +1,24 @@
+# Vajalike pakettide impordid ja seadistused
 import sys
 import os
 
 import streamlit as st
 import pandas as pd
-#import seaborn as sns
-#import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib.pyplot as plt
 from scipy.stats import chi2_contingency
-
-# Leia peakaust
-parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parent_dir)
 
 # Impordi tabelite ja graafikute joonistamiseks vajalikud funktsioonid
 from Python.visuaalide_abilised import maara_raporti_stiil, leia_sildi_mapping
-from Python.visuaalide_abilised import sagedustabel, mitmikvastuse_sagedustabel, loo_risttabel
+from Python.visuaalide_abilised import sagedustabel, mitmikvastuse_sagedustabel, loo_risttabel, loo_mitmikvastuse_risttabel
 from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm, loo_stacked_tulpdiagramm, loo_hor_stacked_tulpdiagramm, loo_heatmap, loo_diverging_stacked_tulpdiagramm
 
 # Määra graafikute stiil
 style = maara_raporti_stiil()
+
+# Leia peakaust
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(parent_dir)
 
 # Impordi andmed puhastamise käigus loodud CVS-st
 data = pd.read_csv('data/cleaned_data.csv')
@@ -422,11 +423,22 @@ st.write(f'Kommunikatsiooni selguse ja teadlikkuse vahelise seose hindamiseks vi
 'Vastajad, kes pidasid kommunikatsiooni väga selgeks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes pidasid kommunikatsiooni puudulikuks. ' \
 'Ehk on olemas selge seos kommunikatsiooni selguse ning seadusest teadlikkuse vahel.')
 
+###################################################
+# EELISTATUD TEABEALLIKAD                         #
+###################################################
 st.write('## Eelistatud teabeallikad')
-st.write(':red[*To-be-done*]')
+st.write('Et mõista, millistest kanalitest tarbijad täna infot ammutavad, uuriti millistest allikatest ammutatakse peamiselt teavet rõiva- ja tekstiiliteemadel, eriti seoses nende mõju ja kestlikkusega keskkonnale. ' \
+'Kuigi küsimus on püstitatud üldisemalt info saamise mõttes, tasuks vastuseid arvesse võtta ka just tekstiilijäätmete sorteerimise info levitamisel.')
+
+st.write('Kõige sagedamini valitud allikad olid sotsiaalmeedia (73%), veebiväljaanded (53%), sõbrad/tuttavad (35%) ja televisioon (33%). ' \
+'See viitab, et inimesed saavad infot peamiselt digikanalitest ja sotsiaalsetest kontaktidest, aga ka traditsioonilisest televisioonist. ' \
+'8% vastajatest ütles, et nad ei huvitu üldse rõiva- ja tekstiiliteemalisest infost. Kusjuures neid vastajaid leidus nii teadlikumate kui vähemteadlike vastajate hulgas. ' \
+'Kõige tavalisem on 2-3 infoallika kasutamine korraga, mis tähendab, et inimesed ei tugine ainult ühele kanalile, vaid kombineerivad erinevaid infoallikaid.')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel'])
 
 # Leia vastuste jaotus - teabe allikate eelistused
-teabe_allikad = mitmikvastuse_sagedustabel(data, koodid, 'K32_teabe_allikad')
+teabe_allikad = mitmikvastuse_sagedustabel(data, koodid, 'K32_teabe_allikad').sort_values(by='protsent', ascending=False)
 
 fig, ax = loo_hor_tulpdiagramm(
     teabe_allikad,
@@ -434,32 +446,15 @@ fig, ax = loo_hor_tulpdiagramm(
     style,
     sort=True   
 )
-
-st.pyplot(fig)
-
-veerud = {
-    'K32_teabe_allikad_1': 'Raadio',
-    'K32_teabe_allikad_2': 'Televisioon',
-    'K32_teabe_allikad_3': 'Ajalehed, ajakirjad',
-    'K32_teabe_allikad_4': 'Artiklid veebiväljaannetes',
-    'K32_teabe_allikad_5': 'Raamatud',
-    'K32_teabe_allikad_6': 'Sotsiaalmeedia',
-    'K32_teabe_allikad_7': 'Uuringud ja teadusartiklid',
-    'K32_teabe_allikad_8': 'Sõbrad/tuttavad',
-    'K32_teabe_allikad_9': 'Ei huvitu sellest infost teadlikult',
-    'K32_teabe_allikad_10': 'Muu'
-}
-
-labelid = leia_sildi_mapping(koodid, 'K3_vanus')
-
-teabeallikad = (
-    data_puhastatud[['K3_vanus', *veerud]]
-    .groupby('K3_vanus')
-    .sum()
-    .rename(columns=veerud)
-    .T # transponeeri
-)
-st.dataframe(teabeallikad, column_config=labelid)
+tab1.pyplot(fig)
+tab2.dataframe(teabe_allikad,
+    column_order=('vastus_lyhike', 'vastuste_arv', 'protsent_str'),
+    column_config={
+        'vastus_lyhike': st.column_config.TextColumn('Vastus'),
+        'vastuste_arv': st.column_config.NumberColumn('Vastuste arv', width=20),
+        'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
+    },
+    hide_index=True)
 
 ###################################################
 # RIIKLIKE JUHISTE SELGUS                         #

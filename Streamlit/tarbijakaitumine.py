@@ -109,25 +109,16 @@ tab2.dataframe(kaitumine_elukoht,
 )
 
 st.write(':red[*To-be-done*]')
-st.write('**Vastajate hinnang teadmistele vs sorteerimiskäitumine**')
+st.write('**Hinnang teadmistele vs sorteerimiskäitumine**')
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 # Hinnang enda teadmistele × sorteerimiskäitumine
 teadmised_sorteerimine = loo_risttabel(sorteerimine_puhas, koodid, 'K8_teadmiste_hinnang', 'K7_sorteerimiskaitumine', normalize=True)
 
 # Loo heatmap
-fig, ax = plt.subplots()
-sns.heatmap(
+fig, ax = loo_heatmap(
     teadmised_sorteerimine,
-    cmap='coolwarm_r',
-    linewidths=1,
-    #linecolor='gray',
-    annot=True
-    #square= True
+    title=''
 )
-plt.xticks(rotation=45)
-ax.set(xlabel=None)
-ax.set(ylabel=None)
-
 tab1.pyplot(fig)
 tab2.dataframe(teadmised_sorteerimine,
     column_config={'K8_teadmiste_hinnang': ''}
@@ -135,27 +126,17 @@ tab2.dataframe(teadmised_sorteerimine,
 
 st.write(':red[*To-be-done*]')
 st.write('Kas vastajad käituvad vastavalt oma väärtushinnangutele?')
-st.write('**Vastajate hinnang probleemi tõsidusele vs sorteerimiskäitumine**')
+st.write('**Hinnang probleemi tõsidusele vs sorteerimiskäitumine**')
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 # Hinnang enda teadmistele × teadlikkus seadusest
 tosidus_sorteerimine = loo_risttabel(sorteerimine_puhas, koodid, 'K9_probleemi_tosidus', 'K7_sorteerimiskaitumine', normalize=True)
 # Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
 
 # Loo heatmap
-fig, ax = plt.subplots()
-sns.heatmap(
+fig, ax = loo_heatmap(
     tosidus_sorteerimine,
-    cmap='coolwarm_r',
-    linewidths=1,
-    #linecolor='gray',
-    annot=True
-    #square= True
+    title=''
 )
-plt.xticks(rotation=45)
-ax.set(xlabel=None)
-ax.set(ylabel=None)
-
-# Display the plot in Streamlit
 tab1.pyplot(fig)
 tab2.dataframe(tosidus_sorteerimine,
     column_config={'K9_probleemi_tosidus': ''}
@@ -382,7 +363,7 @@ tab2.dataframe(kolbmatud,
     },
     hide_index=True)
 
-st.write('Kasutuskülbmatud tekstiilid tuleks viia jäätmejaama. ' \
+st.write('Kasutuskõlbmatud tekstiilid tuleks viia jäätmejaama. ' \
 'Paljud need, kes on teadlikuse seadusest märkinud kõrgeks, viskavad siiski rõivad olmejäätmetesse või viivad riidekonteinerisse.')
 
 # Segaolmejäätmete konteinerisse viijad vs teadlikkus
@@ -472,7 +453,7 @@ tab2.dataframe(valjakutsed,
     },
     hide_index=True)
 
-valjakutsed_kaitumine = loo_mitmikvastuse_risttabel(data_puhastatud, koodid, 'K22_peamised_valjakutsed', 'K7_sorteerimiskaitumine')
+valjakutsed_kaitumine = loo_mitmikvastuse_risttabel(data_puhastatud, koodid, 'K7_sorteerimiskaitumine', 'K22_peamised_valjakutsed')
 valjakutsed_kaitumine
 
 ##################################
