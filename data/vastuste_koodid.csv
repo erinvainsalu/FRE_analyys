@@ -5,7 +5,7 @@ K3_vanus,1,Alaealine (17 või noorem),<18
 K3_vanus,2,18-29,18-29
 K3_vanus,3,30-49,30-49
 K3_vanus,4,50-64,50-64
-K3_vanus,5,65 või vanem,64>
+K3_vanus,5,65 või vanem,>64
 K4_sugu,1,Mees,Mees
 K4_sugu,2,Naine,Naine
 K4_sugu,3,Ei soovi määratleda,Määratlemata
@@ -30,10 +30,10 @@ K6_keel,2,Inglise keel,Inglise
 K6_keel,3,Vene keel,Vene
 K6_keel,4,Muu,Muu
 K7_sorteerimiskaitumine,1,Ei sorteeri,Ei sorteeri
-K7_sorteerimiskaitumine,2,"Jah, maksimaalselt kahes kategoorias",<3 kategooriat
-K7_sorteerimiskaitumine,3,"Jah, 3-5 jäätmekategoorias",3-5 kategooriat
-K7_sorteerimiskaitumine,4,"Jah, üle 6 jäätmekategoorias",5> kategooriat
-K7_sorteerimiskaitumine,5,"Ei, sest elan täielikult null-kulu eluviisi",Null-kulu eluviis
+K7_sorteerimiskaitumine,2,"Jah, maksimaalselt kahes kategoorias",<3 kategoorias
+K7_sorteerimiskaitumine,3,"Jah, 3-5 jäätmekategoorias",3-5 kategoorias
+K7_sorteerimiskaitumine,4,"Jah, üle 6 jäätmekategoorias",>5 kategoorias
+K7_sorteerimiskaitumine,5,"Ei, sest elan täielikult null-kulu eluviisi",Null-kulu elu
 K7_sorteerimiskaitumine,6,Muu,Muu
 K8_teadmiste_hinnang,1,Väga madal või olematu tarbijateadlikkus,Väga madal
 K8_teadmiste_hinnang,2,2 - puudu,Pigem madal
@@ -121,11 +121,11 @@ K29_sobiv_kogumisviis,3,Kogumispunktid kaubanduspindadel,Kogumispunkt kaubandusp
 K29_sobiv_kogumisviis,4,"Mobiilsed kogumisautod, mis käivad graafiku alusel ukselt-uksele tekstiile kogumas",Mobiilne kogumisauto
 K29_sobiv_kogumisviis,5,Kogumisnädalad kodukandis (nt kord kvartalis),Kodulähedane kogumisnädal
 K29_sobiv_kogumisviis,6,Muu,Muu
-K30_valmisolek_kategoriseerimiseks,1,"Jah, see oleks mulle sobiv",Jah
-K30_valmisolek_kategoriseerimiseks,2,"Jah, kui sorteerimisjuhis on selge ja konkreetne",Jah (selge juhis)
+K30_valmisolek_kategoriseerimiseks,1,"Ei, eelistaksin üht konteinerit kõigele (one fits for all)","Ei, eelistan üht konteinerit kõigele"
+K30_valmisolek_kategoriseerimiseks,2,Pole kindel,Pole kindel
 K30_valmisolek_kategoriseerimiseks,3,"Jah, kui kogumispunktid on mugavas asukohas ja mulle lähedal",Jah (kogumispunkt mugavas asukohas)
-K30_valmisolek_kategoriseerimiseks,4,"Ei, eelistaksin üht konteinerit kõigele (one fits for all)","Ei, eelistan üht konteinerit kõigele"
-K30_valmisolek_kategoriseerimiseks,5,Pole kindel,Pole kindel
+K30_valmisolek_kategoriseerimiseks,4,"Jah, kui sorteerimisjuhis on selge ja konkreetne",Jah (selge juhis)
+K30_valmisolek_kategoriseerimiseks,5,"Jah, see oleks mulle sobiv",Jah
 K30_valmisolek_kategoriseerimiseks,6,Muu,Muu
 K32_teabe_allikad,1,Raadio,Raadio
 K32_teabe_allikad,2,Televisioon,Televisioon

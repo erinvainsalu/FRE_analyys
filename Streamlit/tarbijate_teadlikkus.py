@@ -44,84 +44,6 @@ st.write('Aastal 2025 jõustunud seadus näeb ette tekstiilijäätmete liigiti k
 'See on pannud KOV-idele kohustuse luua süsteem tarbijatelt tekstiilijäätmete eraldi kogumiseks.')
 
 ###################################################
-# TEADLIKKUS SEADUSEST                            #
-###################################################
-
-st.write('## Teadlikkus 2025. aastal Eestis kehtima hakanud seadusest')
-
-st.write('Uuringus osalejatelt küsiti nende teadlikkust 2025. aasta algul jõustunud seadusest. ' \
-'Jõustunud seadusest oli teadlik 252 vastajat (39%), kusjuures 1% nendest leidis, et tegemist on valitsuse ja KOV-ide, mitte tarbijate probleemiga. ' \
-'Ülejäänud 61% vastanutest jagunesid nendeks, kes ei ole seadusest teadlikud (28%) ning nendeks, kes on küll seadusest kuulnud, aga ei ole teadlikud detailidest (33%). ' \
-'Kuigi 72% vastajatest on vähemalt ühel või teisel moel jõustunud seadusest kuulnud, siis siiski on palju teadmatust seoses seaduse ja selle täitmise üksikasjadega. ')
-
-st.write('**Vastajate jaotus teadlikkuse lõikes**')
-
-tab1, tab2 = st.tabs(['Graafik', 'Tabel'])
-# Leia vastajate arv teadlikkuse alusel
-teadlikkus = sagedustabel(data_puhastatud, koodid, 'K11_teadlikkus').sort_values(by='protsent', ascending=False)
-
-# Kuva tulpdiagramm
-fig, ax = loo_hor_tulpdiagramm(
-    teadlikkus,
-    '',
-    style,
-    sort=True
-)
-tab1.pyplot(fig)
-tab2.dataframe(teadlikkus,
-    column_order=('vastus_lyhike', 'vastuste_arv', 'protsent_str'),
-    column_config={
-        'vastus_lyhike': st.column_config.TextColumn('Vastus'),
-        'vastuste_arv': st.column_config.NumberColumn('Vastuste arv', width=20),
-        'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
-    },
-    hide_index=True)
-
-st.write('Seadusest on kõige teadlikumad vastajad vanuses 30+, kelle seas on seadusest teadlikke 40-46%. ' \
-'Nooremate vastajate seas on seadusest teadlikke 21-30%. Nendes vanusegruppides on võrreldes teistega oluliselt rohkem neid, kes ei ole seadusest üldse teadlikud (41-52%). ' \
-'Kõigis vanusegruppides on umbes kolmandik neid, kes on seadusest küll kuulnud, kuid ei tea täpsemalt selle sisu.')
-
-st.write('**Vastajate teadlikkus vanusegruppide lõikes**')
-
-tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
-
-# Teadlikkus vanusegruppide alusel
-teadlikkus_vanus = loo_risttabel(data_puhastatud, koodid, 'K3_vanus', 'K11_teadlikkus', normalize=True)
-
-# Kuva tulpdiagramm
-fig, ax = loo_hor_stacked_tulpdiagramm(
-    teadlikkus_vanus,
-    '',
-    style
-)
-tab1.pyplot(fig)
-tab2.dataframe(teadlikkus_vanus,
-    column_config={'K3_vanus': ''}
-)
-
-st.write('Maakondade lõikes on näha, et teiste maakondadega võrreldes on Pärnumaal oluliselt rohkem vastajaid, kes on uuest seadusest teadlikud (62%). ' \
-'Selles maakonnas on ka seadusest mitteteadlike hulk võrreldes teiste maakondadega pigem väiksem. ' \
-'Ootuste vastaselt on Eesti suurimate maakondade (Harju, Tartu) puhul seadusest mitteteadlike vastajate hulk pigem kõrge - vastavalt 28% ja 31%.')
-
-st.write('**Vastajate teadlikkus maakondade lõikes**')
-
-tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
-
-# Teadlikkus elukoha alusel
-teadlikkus_elukoht = loo_risttabel(data_puhastatud, koodid, 'K5_elukoht', 'K11_teadlikkus', normalize=True)
-
-# Kuva tulpdiagramm
-fig, ax = loo_hor_stacked_tulpdiagramm(
-    teadlikkus_elukoht,
-    '',
-    style
-)
-tab1.pyplot(fig)
-tab2.dataframe(teadlikkus_elukoht,
-    column_config={'K5_elukoht': ''}
-)
-
-###################################################
 # HINNANG TEADMISTELE                             #
 ###################################################
 
@@ -195,47 +117,6 @@ tab2.dataframe(teadmised_vanus,
 
 #st.pyplot(fig)
 
-st.write('Vastajatest, kes hindavad oma teadmisi väga heaks, on 64% teadlikud uuest seadusest. ' \
-'Kõigis enesehinnangu gruppides leidub 25-37% neid, kes on seadusest kuulnud, kuid ei ole täpsemalt kursis selle sisuga.')
-
-st.write('Vastanute hulgas, kes hindavad oma teadmisi väga madalaks või pigem madalaks, on uuest seadusest teadlikke 53-63%. ' \
-'Kusjuures, väga madalate enesehinnanguliste teadmistega vastajate hulgas on 0% seadusest teadlikke.')
-
-st.write('**Vastajate hinnang teadmistele vs teadlikkus uuest seadusest**')
-
-tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
-
-# Liida kategooriad "Olen teadlik" ja "Olen teadlik (ei ole tarbija mure)"
-vahetabel = data_puhastatud.copy()
-vahetabel['K11_teadlikkus'] = vahetabel['K11_teadlikkus'].replace(2, 4)
-
-# Loo analüüsitav tabel
-analyys_table = pd.crosstab(vahetabel['K8_teadmiste_hinnang'], vahetabel['K11_teadlikkus'])
-
-# Hinnang enda teadmistele × teadlikkus seadusest
-teadmised_teadlikkus = loo_risttabel(vahetabel, koodid, 'K8_teadmiste_hinnang', 'K11_teadlikkus', normalize=True)
-# Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
-
-# Loo heatmap
-fig, ax = loo_heatmap(
-    teadmised_teadlikkus,
-    title=''
-)
-tab1.pyplot(fig)
-tab2.dataframe(teadmised_teadlikkus,
-    column_config={'K8_teadmiste_hinnang': ''}
-)
-
-# Teosta hii-ruut test
-chi2, p_value, dof, expected_freq = chi2_contingency(analyys_table)
-
-#st.write(f"Chi-square: {chi2:.4f}")
-#st.write(f"P-value: {p_value:.4f}")
-
-st.write(f'Enesehinnatud teadmiste ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on {chi2:.4f} (p={p_value:.4f}). ' \
-'Vastajad, kes on hinnanud oma teadmiseid kõrgemaks olid teadlikumad uues seadusest, samas kui madalama teadmiste hinnanguga vastajad olid sagedamini teadmatud. ' \
-'Ehk on olemas selge seos üldiste teadmiste ning seadusest teadlikkuse vahel.')
-
 ###################################################
 # HINNANG PROBLEEMI TÕSIDUSELE                    #
 ###################################################
@@ -294,6 +175,131 @@ tab2.dataframe(probleem_vanus,
     column_config={'K3_vanus': ''}
 )
 
+###################################################
+# TEADLIKKUS SEADUSEST                            #
+###################################################
+
+st.write('## Teadlikkus 2025. aastal Eestis kehtima hakanud seadusest')
+
+st.write('Uuringus osalejatelt küsiti nende teadlikkust 2025. aasta algul jõustunud seadusest. ' \
+'Jõustunud seadusest oli teadlik 252 vastajat (39%), kusjuures 1% nendest leidis, et tegemist on valitsuse ja KOV-ide, mitte tarbijate probleemiga. ' \
+'Ülejäänud 61% vastanutest jagunesid nendeks, kes ei ole seadusest teadlikud (28%) ning nendeks, kes on küll seadusest kuulnud, aga ei ole teadlikud detailidest (33%). ' \
+'Kuigi 72% vastajatest on vähemalt ühel või teisel moel jõustunud seadusest kuulnud, siis siiski on palju teadmatust seoses seaduse ja selle täitmise üksikasjadega. ')
+
+st.write('**Vastajate jaotus teadlikkuse lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel'])
+# Leia vastajate arv teadlikkuse alusel
+teadlikkus = sagedustabel(data_puhastatud, koodid, 'K11_teadlikkus').sort_values(by='protsent', ascending=False)
+
+# Kuva tulpdiagramm
+fig, ax = loo_hor_tulpdiagramm(
+    teadlikkus,
+    '',
+    style,
+    sort=True
+)
+tab1.pyplot(fig)
+tab2.dataframe(teadlikkus,
+    column_order=('vastus_lyhike', 'vastuste_arv', 'protsent_str'),
+    column_config={
+        'vastus_lyhike': st.column_config.TextColumn('Vastus'),
+        'vastuste_arv': st.column_config.NumberColumn('Vastuste arv', width=20),
+        'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
+    },
+    hide_index=True)
+
+plt.savefig('Documentation/teadlikkus_seadusest.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
+st.write('Seadusest on kõige teadlikumad vastajad vanuses 30+, kelle seas on seadusest teadlikke 40-46%. ' \
+'Nooremate vastajate seas on seadusest teadlikke 21-30%. Nendes vanusegruppides on võrreldes teistega oluliselt rohkem neid, kes ei ole seadusest üldse teadlikud (41-52%). ' \
+'Kõigis vanusegruppides on umbes kolmandik neid, kes on seadusest küll kuulnud, kuid ei tea täpsemalt selle sisu.')
+
+st.write('**Vastajate teadlikkus vanusegruppide lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Teadlikkus vanusegruppide alusel
+teadlikkus_vanus = loo_risttabel(data_puhastatud, koodid, 'K3_vanus', 'K11_teadlikkus', normalize=True)
+
+# Kuva tulpdiagramm
+fig, ax = loo_hor_stacked_tulpdiagramm(
+    teadlikkus_vanus,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(teadlikkus_vanus,
+    column_config={'K3_vanus': ''}
+)
+
+st.write('Maakondade lõikes on näha, et teiste maakondadega võrreldes on Pärnumaal oluliselt rohkem vastajaid, kes on uuest seadusest teadlikud (62%). ' \
+'Selles maakonnas on ka seadusest mitteteadlike hulk võrreldes teiste maakondadega pigem väiksem. ' \
+'Ootuste vastaselt on Eesti suurimate maakondade (Harju, Tartu) puhul seadusest mitteteadlike vastajate hulk pigem kõrge - vastavalt 28% ja 31%.')
+
+st.write('**Vastajate teadlikkus maakondade lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Teadlikkus elukoha alusel
+teadlikkus_elukoht = loo_risttabel(data_puhastatud, koodid, 'K5_elukoht', 'K11_teadlikkus', normalize=True)
+
+# Kuva tulpdiagramm
+fig, ax = loo_hor_stacked_tulpdiagramm(
+    teadlikkus_elukoht,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(teadlikkus_elukoht,
+    column_config={'K5_elukoht': ''}
+)
+
+st.write('Vastajatest, kes hindavad oma teadmisi väga heaks, on 64% teadlikud uuest seadusest. ' \
+'Kõigis enesehinnangu gruppides leidub 25-37% neid, kes on seadusest kuulnud, kuid ei ole täpsemalt kursis selle sisuga.')
+
+st.write('Vastanute hulgas, kes hindavad oma teadmisi väga madalaks või pigem madalaks, on uuest seadusest teadlikke 53-63%. ' \
+'Kusjuures, väga madalate enesehinnanguliste teadmistega vastajate hulgas on 0% seadusest teadlikke.')
+
+st.write('**Vastajate hinnang teadmistele vs teadlikkus uuest seadusest**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Liida kategooriad "Olen teadlik" ja "Olen teadlik (ei ole tarbija mure)"
+vahetabel = data_puhastatud.copy()
+vahetabel['K11_teadlikkus'] = vahetabel['K11_teadlikkus'].replace(2, 4)
+
+# Loo analüüsitav tabel
+analyys_table = pd.crosstab(vahetabel['K8_teadmiste_hinnang'], vahetabel['K11_teadlikkus'])
+
+# Hinnang enda teadmistele × teadlikkus seadusest
+teadmised_teadlikkus = loo_risttabel(vahetabel, koodid, 'K8_teadmiste_hinnang', 'K11_teadlikkus', normalize=True)
+# Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
+
+# Loo heatmap
+fig, ax = loo_heatmap(
+    teadmised_teadlikkus,
+    title=''
+)
+tab1.pyplot(fig)
+tab2.dataframe(teadmised_teadlikkus,
+    column_config={'K8_teadmiste_hinnang': ''}
+)
+
+plt.savefig('Documentation/teadlikkus_vs_teadmised.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
+# Teosta hii-ruut test
+chi2, p_value, dof, expected_freq = chi2_contingency(analyys_table)
+
+#st.write(f"Chi-square: {chi2:.4f}")
+#st.write(f"P-value: {p_value:.4f}")
+
+st.write(f'Enesehinnatud teadmiste ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on {chi2:.4f} (p={p_value:.4f}). ' \
+'See ei ole juhus, et vastajad, kes on hinnanud oma teadmiseid kõrgemaks olid teadlikumad uues seadusest, samas kui madalama teadmiste hinnanguga vastajad olid sagedamini teadmatud. ' \
+'Ehk on olemas selge seos enesehinnanguliste teadmiste ning seadusest teadlikkuse vahel.')
+
 st.write('Vastajatest, kes tunnetavad, et tekstiilijäätmete probleem Eestis ja globaalses mastaabis on väga tõsine või pigem tõsine, on 36-47% teadlikud kehtima hakanud seadusest. ' \
 'Enamuses probleemi tõsiduse hinnangu gruppides on 22-36% neid, kes kes on seadusest küll kuulnud, kuid ei tea täpsemalt selle sisu.' \
 'Seadusest ei ole teadlikud need vastajad, kes on probleemi tõsidust hinnanud olematuks või väikeseks - esimeses grupis on seadusest mitteteadlikke 67%, teises 78%.')
@@ -326,8 +332,8 @@ chi2, p_value, dof, expected_freq = chi2_contingency(analyys_table)
 #st.write(f"P-value: {p_value:.4f}")
 
 st.write(f'Probleemi tõsiduse ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on {chi2:.4f} (p={p_value:.4f}). ' \
-'Vastajad, kes on hinnanud probleemi tõsisemaks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes hindasin probleemi olematuks või väikeseks. ' \
-'Ehk on olemas selge seos probleemi hinnangulise tõsiduse ning seadusest teadlikkuse vahel.')
+'See ei ole juhus, et vastajad, kes on hinnanud probleemi tõsisemaks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes hindasin probleemi olematuks või väikeseks. ' \
+'Ehk on olemas selge seos probleemi tõsiduse taju ning seadusest teadlikkuse vahel.')
 
 st.write('On selge, et probleem Eestis eksisteerib ja vastustest selgub, et ka inimesed tunnetavad probleemi väga selgelt. ' \
 'Olgugi, et probleem on suur ning probleemi nähakse vastanute seas tõsisena, ei ole see muutnud tarbijate tarbimisharjumusi ja rõivaste ning tekstiilide tarbimine on kasvanud ja kasvamas.')
@@ -364,6 +370,9 @@ tab2.dataframe(kommunikatsiooni_selgus,
     },
     hide_index=True)
 
+plt.savefig('Documentation/kommunikatsiooni_selgus.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 st.write('Kui vaadelda kommunikatsiooni selgust maakondade lõikes, siis kõige selgema kommunikatsiooniga jääb silma Pärnu maakond. ' \
 'Pärnu maakonnas on kokku 33% neid vastajaid, kes on leidnud, et kommunikatsioon on olnud väga selge või selge, kuid mittetäielik. ' \
 'Pärnu maakonnas oli uuringu kohaselt ka kõige rohkem vastajaid, kes olid uuest seadusest teadlikud. ' \
@@ -392,11 +401,27 @@ st.write('Vastustest tuleneb, et vastajatest, kes on hinnanud kommunikatsiooni v
 'Siiski on suurem hulk neid vastajaid, kes on hinnanud kommunikatsiooni puudulikuks või arusaamatuks ning kes ei ole üldse teadlikud uuest nõudest. ' \
 'Vastajate grupis, kes pidas kommunikatsiooni puudulikuks, on mitteteadlikke 37% ja kommunikatsiooni arusaamatuks pidanud grupis 19%.')
 
-st.write('**Kommunikatsiooni selgus vs teadlikkus uuest seadusest**')
+st.write('**Kommunikatsiooni selgus vanuse lõikes**')
 
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 
-analyys_table = pd.crosstab(vahetabel['K13_kommunikatsiooni_selgus'], vahetabel['K11_teadlikkus'])
+# Kommunikatsiooni selgus elukoha alusel risttabel
+kommunikatsioon_vanus = loo_risttabel(data_puhastatud, koodid, 'K3_vanus', 'K13_kommunikatsiooni_selgus', normalize=True)
+
+# Loo tulpdiagramm
+fig, ax = loo_hor_stacked_tulpdiagramm(
+    kommunikatsioon_vanus,
+    '',
+    style
+)
+tab1.pyplot(fig)
+tab2.dataframe(kommunikatsioon_vanus,
+    column_config={'K3_vanus': ''}
+)
+
+st.write('**Kommunikatsiooni selgus vs teadlikkus uuest seadusest**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 
 # Hinnang kommunikatsioonile × teadlikkus seadusest
 kommunikatsioon_teadlikkus = loo_risttabel(vahetabel, koodid, 'K13_kommunikatsiooni_selgus', 'K11_teadlikkus', normalize=True)
@@ -411,7 +436,11 @@ tab2.dataframe(kommunikatsioon_teadlikkus,
     column_config={'K13_kommunikatsiooni_selgus': ''}
 )
 
+plt.savefig('Documentation/kommunikatsioon_vs_teadlikkus.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 # Statistiline analüüs: korrelatsioon teadlikkuse ja enesehinnangu vahel
+analyys_table = pd.crosstab(vahetabel['K13_kommunikatsiooni_selgus'], vahetabel['K11_teadlikkus'])
 
 # Teosta hii-ruut test
 chi2, p_value, dof, expected_freq = chi2_contingency(analyys_table)
@@ -420,7 +449,7 @@ chi2, p_value, dof, expected_freq = chi2_contingency(analyys_table)
 #st.write(f"P-value: {p_value:.4f}")
 
 st.write(f'Kommunikatsiooni selguse ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on {chi2:.4f} (p={p_value:.4f}). ' \
-'Vastajad, kes pidasid kommunikatsiooni väga selgeks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes pidasid kommunikatsiooni puudulikuks. ' \
+'See ei ole juhus, et vastajad, kes pidasid kommunikatsiooni väga selgeks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes pidasid kommunikatsiooni puudulikuks. ' \
 'Ehk on olemas selge seos kommunikatsiooni selguse ning seadusest teadlikkuse vahel.')
 
 ###################################################

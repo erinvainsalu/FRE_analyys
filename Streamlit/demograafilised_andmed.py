@@ -63,6 +63,9 @@ tab2.dataframe(vanus_sagedus,
     },
     hide_index=True)
 
+plt.savefig('Documentation/vanuse_jaotus.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 st.write('Peamine kiirmoe tarbija globaalses vaates on vanuses 26-35, mistõttu võib eeldada, et see vanusegrupp ostab ja seetõttu ka loobub kõige enam rõivastest ning kodutekstiilidest ja seda ka Eestis.')
 
 ###################################################
@@ -97,6 +100,7 @@ tab2.dataframe(sugu_sagedus,
         'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
     },
     hide_index=True)
+plt.close(fig)
 
 st.write('Kuna vastajate sooline jaotus on tugevalt naiste poole kaldu, siis edasise analüüsi käigus ei vaadelda vastuste jaotust soolise kuuluvuse alusel.')
 
@@ -133,6 +137,9 @@ tab2.dataframe(elukoht_sagedus,
         'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
     },
     hide_index=True)
+
+plt.savefig('Documentation/elukoha_jaotus.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
 
 st.write('Kuna vastajate esindatus enamuses Eesti maakondades on madal, siis edasises analüüsi käigus koondatakse vähese vastajate hulgaga maakonnad vastusevariandi "Muu" alla.')
 

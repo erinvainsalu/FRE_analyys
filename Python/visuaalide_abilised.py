@@ -20,7 +20,7 @@ def maara_raporti_stiil():
         #"font.family": "sans-serif",
         'font.size': 10,
         'axes.titlesize': 13,
-        'axes.labelsize': 10,
+        'axes.labelsize': 9,
 
         # telgede stiil
         'axes.spines.top': False,

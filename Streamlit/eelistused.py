@@ -15,6 +15,16 @@ from Python.visuaalide_abilised import loo_hor_tulpdiagramm, loo_hor_stacked_tul
 # Määra graafikute stiil
 style = maara_raporti_stiil()
 
+app_path = 'http://localhost:8502'
+praegune_leht = 'eelistused'
+
+# Sidebar linkidega
+st.sidebar.markdown("### Tarbijate eelistused")
+st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#olulised-tegurid-roivastest-loobumisel" target="_self">Loobumisel olulised tegurid</a>', unsafe_allow_html=True)
+st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-kogumisviisid" target="_self">Eelistatud kogumisviisid</a>', unsafe_allow_html=True)
+st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#valmisolek-esemete-eraldi-sorteerimiseks" target="_self">Valmisolek sorteerimiseks</a>', unsafe_allow_html=True)
+st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#sorteerimist-julgustavad-tegurid" target="_self">Julgustavad tegurid</a>', unsafe_allow_html=True)
+
 # Leia peakaust
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parent_dir)
@@ -78,11 +88,13 @@ tab2.dataframe(oluline_loobumisel,
         'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
     },
     hide_index=True)
+plt.close(fig)
 
 st.write('### Probleemi tõsiduse tajumise mõju loobumisel olulistele teguritele')
 
 st.write('Vastajad, kes on hinnanud, et tekstiilijäätmete probleem puudub või on väike, märkisid sagedamini, et neid ei huvita esemete edasine saatus (vastavalt 23% ja 26%). ' \
-'Vastajate hulgas, kes ei tunnistanud probleemi olemasolu, oli teiste gruppidega võrreldes ka rohkem neid, kes soovisid rõivaste loobumisest saada isiklikku kasu (15%).')
+'Vastajate hulgas, kes ei tunnistanud probleemi olemasolu, oli teiste gruppidega võrreldes ka rohkem neid, kes soovisid rõivaste loobumisest saada isiklikku kasu (15%). ' \
+'Samas näiteks need, kes hindavad probleemi väga tõsiseks, peavad rõivastest loobumisel teistest olulisemaks vastuvõtva organisatsiooni läbipaistvust (18%).')
 
 st.write('**Probleemi tõsidus vs loobumisel olulised tegurid**')
 
@@ -108,6 +120,7 @@ tab2.dataframe(
     tosidus_oluline,
     column_config={'K9_probleemi_tosidus': ''}
 )
+plt.close(fig)
 
 ###################################################
 # SOBIV KOGUMISVIIS                               #
@@ -152,6 +165,9 @@ tab2.dataframe(kogumisviisid,
     },
     hide_index=True)
 
+plt.savefig('Documentation/kogumisviisi_eelistused.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 st.write('### Vanuselised erinevused eelistustes')
 
 st.write('Vanuserühmade võrdlus paljastab olulisi erinevusi. Vanuserühmad 18-64 näitavad kõige suuremat huvi linnas paiknevate püsivate kogumispunktide vastu, ' \
@@ -184,10 +200,15 @@ tab2.dataframe(
     column_config={'K3_vanus': ''}
 )
 
+plt.savefig('Documentation/kogumisviis_vanus.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 st.write('### Sorteerimiskäitumise mõju eelistustele')
 
 st.write('Inimesed, kes juba sorteerivad tekstiile rohkem kui viie kategooria järgi, eelistavad veidi enam linnas paiknevaid püsipunkte (37%) ja jäätmejaama (13%) võrreldes mitte-sorteerijatega. ' \
 'See võib viidata, et aktiivsemad sorteerijad on valmis rohkem vaeva nägema. Seda kinnitab ka see, et mitte-sorteerijate hulgas on rohkem neid, kes eelistavad ukselt-ukselt kogumislahendust.')
+
+st.write('**Eelistatud kogumisviisid sorteerimiskäitumise lõikes**')
 
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 
@@ -213,6 +234,7 @@ tab2.dataframe(
     kaitumine_kogumisviis,
     column_config={'K7_sorteerimiskaitumine': ''}
 )
+plt.close(fig)
 
 ###################################################
 # VALMISOLEK KATEGORISEERIMISEKS                  #
@@ -220,7 +242,7 @@ tab2.dataframe(
 st.write('## Valmisolek esemete eraldi sorteerimiseks')
 
 st.write('Rõivaste edasise müügi ja ümbertöötluse edukus sõltub esmasest sorteerimisest ehk sellest, kas tarbija on valmis tekstiile enne loobumist sorteerima. ' \
-'Seetõttu uuriti, kas vastajad oleksid valmis kasutama mitut erinevat konteinerit või kogumispunkti sõltuvalt eseme kategooriast (nt kasutuskõlblik, parandatav, kasutuskõlmatu).' \
+'Seetõttu uuriti, kas vastajad oleksid valmis kasutama mitut erinevat konteinerit või kogumispunkti sõltuvalt eseme kategooriast (nt kasutuskõlblik, parandatav, kasutuskõlmatu). ' \
 '86% vastajatest väljendas valmisolekut tekstiile sorteerida: 38% oleks valmis sorteerima juhul, kui juhised on selged, 25% kui kogumispunktid on mugavas asukohas, 23% on juba praegu valmis sorteerima ilma tingimusteta. ' \
 'Vaid 10% märkis, et nad eelistavad ühe konteineri lahendust. 3% ei osanud enda eelistust välja tuua. Need tulemused viitavad, et suurem osa takistustest ei ole tarbijate motivatsioonis, vaid pigem süsteemi mugavuses ja selguses.')
 
@@ -252,6 +274,9 @@ tab2.dataframe(valmisolek,
     },
     hide_index=True)
 
+plt.savefig('Documentation/valmisolek.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
 st.write('### Sorteerimiskäitumise mõju valmisolekule')
 
 st.write('Kõige kõrgem valmisolek sorteerida ilma tingimusteta on nende vastajate seas, kes sorteerivad jäätmeid enam kui viide kategooriasse või järgivad nullkulu eluviisi. ' \
@@ -264,11 +289,14 @@ st.write('Ka mittesorteerijate hulgas sõltub valmisolek peamiselt mugavusest ja
 
 st.write('**Valmisolek sorteerimiskäitumise lõikes**')
 
+# Eemalda sorteerimiskäitumine, kus valikuks Null-kulu eluviis, muu
+sorteerimine_puhas = data_puhastatud[data_puhastatud['K7_sorteerimiskaitumine'].isin([1, 2, 3, 4])]
+
 tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
 
 # Valmisolek sorteerimiskäitumise alusel
 valmisolek_kaitumine = loo_risttabel(
-    df_data=data_puhastatud,
+    df_data=sorteerimine_puhas,
     df_koodid=koodid, 
     tunnus_rida='K7_sorteerimiskaitumine', 
     tunnus_veerg='K30_valmisolek_kategoriseerimiseks', 
@@ -285,6 +313,42 @@ tab1.pyplot(fig)
 tab2.dataframe(valmisolek_kaitumine,
     column_config={'K7_sorteerimiskaitumine': ''}
 )
+
+plt.savefig('Documentation/sorteerimine_valmisolek.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.close(fig)
+
+st.write('### Probleemi tajumise mõju valmisolekule')
+
+st.write('Selge juhise vajadus on ühtlaselt kõrge kõigis probleemi tõsiduse tajumise gruppides (22-43%). Isegi probleemi mittetajujate seas eelistab 33% vastajatest selget juhendit. ' \
+'Ilma lisatingimusteta sorteerijate osakaal on nende seas, kes probleemi tõsiseks või väga tõsiseks peavad, suurem kui probleemi tõsidust madalamalt hindavate gruppide seas. ' \
+'Probleemi pigem tõsiseks või väga tõsiseks hindajate seas on nende osakaal 21-27%, probleemi väikeseks või üldse puuduvaks hindajate seas 11-13%.')
+st.write('Ühe konteineri eelistajate trend on samas vastupidine. See valik on oluliselt populaarsem nende hulgas, kes peavad probleemi keskmiseks või madalamaks (22-23%) ning kaob peaaegu täielikult nende hulgas, kes peavad probleemi väga tõsiseks (5%). ' \
+'Ka nende vastajate hulk, kes ei oska enda eelistust sorteerimise osas välja tuua, on probleemi mittetajujate hulgas oluliselt suurem kui probleemi tõsiseks hindajate hulgas - vastavalt 22% ja 1%.')
+
+st.write('**Valmisolek probleemi tõsiduse lõikes**')
+
+tab1, tab2 = st.tabs(['Graafik', 'Tabel (% vastanutest)'])
+
+# Valmisolek probleemi tõsiduse alusel
+valmisolek_kaitumine = loo_risttabel(
+    df_data=data_puhastatud,
+    df_koodid=koodid, 
+    tunnus_rida='K9_probleemi_tosidus', 
+    tunnus_veerg='K30_valmisolek_kategoriseerimiseks', 
+    normalize=True
+)
+
+# Kuva tulpdiagramm
+fig, ax = loo_hor_stacked_tulpdiagramm(
+    df=valmisolek_kaitumine,
+    title='',
+    style_config=style
+)
+tab1.pyplot(fig)
+tab2.dataframe(valmisolek_kaitumine,
+    column_config={'K9_probleemi_tosidus': ''}
+)
+plt.close(fig)
 
 ###################################################
 # JULGUSTAVAD TEGURID                             #
@@ -328,3 +392,4 @@ tab2.dataframe(tegurid,
         'protsent_str': st.column_config.TextColumn('Protsent', alignment='right', width=20)
     },
     hide_index=True)
+plt.close(fig)
