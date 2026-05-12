@@ -19,10 +19,10 @@ app_path = 'http://localhost:8502'
 praegune_leht = 'eelistused'
 
 # Sidebar linkidega
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#olulised-tegurid-roivastest-loobumisel" target="_self">Loobumisel olulised tegurid</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-kogumisviisid" target="_self">Eelistatud kogumisviisid</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#valmisolek-esemete-eraldi-sorteerimiseks" target="_self">Valmisolek sorteerimiseks</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#sorteerimist-julgustavad-tegurid" target="_self">Julgustavad tegurid</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#olulised-tegurid-roivastest-loobumisel" target="_self">Loobumisel olulised tegurid</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-kogumisviisid" target="_self">Eelistatud kogumisviisid</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#valmisolek-esemete-eraldi-sorteerimiseks" target="_self">Valmisolek sorteerimiseks</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#sorteerimist-julgustavad-tegurid" target="_self">Julgustavad tegurid</a>', unsafe_allow_html=True)
 
 # Leia peakaust
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -3,9 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Impordi tabelite ja graafikute joonistamiseks vajalikud funktsioonid
-from Python.visuaalide_abilised import maara_raporti_stiil, leia_sildi_mapping
-from Python.visuaalide_abilised import sagedustabel, mitmikvastuse_sagedustabel, loo_risttabel, loo_mitmikvastuse_risttabel
-from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm, loo_stacked_tulpdiagramm, loo_hor_stacked_tulpdiagramm, loo_heatmap
+from Python.visuaalide_abilised import maara_raporti_stiil
+from Python.visuaalide_abilised import sagedustabel, mitmikvastuse_sagedustabel
+from Python.visuaalide_abilised import loo_tulpdiagramm, loo_hor_tulpdiagramm
 
 # Määra graafikute stiil
 style = maara_raporti_stiil()

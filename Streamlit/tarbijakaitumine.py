@@ -24,14 +24,14 @@ app_path = 'http://localhost:8501'
 praegune_leht = 'tarbijakaitumine'
 
 # Sidebar linkidega
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#taenane-sorteerimiskaeitumine" target="_self">Tänane sorteerimiskäitumine</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#peamised-vaeljakutsed-sorteerimisel" target="_self">Peamised väljakutsed</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#loobutud-tekstiilide-kogus-uehes-kalendriaastas" target="_self">Loobutud tekstiilide kogused</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#toimimine-mittevajalike-roivaste-ja-tekstiilidega" target="_self">Mittevajalike tekstiilidega toimimine</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#loobumise-pohjused" target="_self">Loobumise põhjused</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#kasutuskolbmatutest-tekstiilidest-loobumise-viisid" target="_self">Kasutuskõlbmatutest tekstiilidest loobumine</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#ultrakiirmoe-ostmise-harjumused" target="_self">Ultrakiirmoe ostuharjumused</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#uute-roivaste-ostmissagedus" target="_self">Uute rõivaste ostmissagedus</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#taenane-sorteerimiskaeitumine" target="_self">Tänane sorteerimiskäitumine</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#peamised-vaeljakutsed-sorteerimisel" target="_self">Peamised väljakutsed</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#loobutud-tekstiilide-kogus-uehes-kalendriaastas" target="_self">Loobutud tekstiilide kogused</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#toimimine-mittevajalike-roivaste-ja-tekstiilidega" target="_self">Mittevajalike tekstiilidega toimimine</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#loobumise-pohjused" target="_self">Loobumise põhjused</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#kasutuskolbmatutest-tekstiilidest-loobumise-viisid" target="_self">Kasutuskõlbmatutest tekstiilidest loobumine</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#ultrakiirmoe-ostmise-harjumused" target="_self">Ultrakiirmoe ostuharjumused</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#uute-roivaste-ostmissagedus" target="_self">Uute rõivaste ostmissagedus</a>', unsafe_allow_html=True)
 
 # Impordi andmed puhastamise käigus loodud CVS-st
 data = pd.read_csv('data/cleaned_data.csv')

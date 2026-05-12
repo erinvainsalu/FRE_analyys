@@ -21,10 +21,10 @@ app_path = 'https://freuuring.streamlit.app'
 praegune_leht = 'demograafilised_andmed'
 
 # Sidebar linkidega
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-vanus" target="_self">Vanus</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-sugu" target="_self">Sugu</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-peamine-elukoht" target="_self">Peamine elukoht</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-peamine-kodune-keel" target="_self">Peamine kodune keel</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-vanus" target="_self">Vanus</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-sugu" target="_self">Sugu</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-peamine-elukoht" target="_self">Peamine elukoht</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#vastajate-peamine-kodune-keel" target="_self">Peamine kodune keel</a>', unsafe_allow_html=True)
 
 # Impordi andmed puhastamise käigus loodud CVS-st
 data = pd.read_csv('data/cleaned_data.csv')

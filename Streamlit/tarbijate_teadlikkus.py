@@ -20,12 +20,12 @@ app_path = 'https://freuuring.streamlit.app'
 praegune_leht = 'tarbijate_teadlikkus'
 
 # Sidebar linkidega
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tarbijate_teadlikkus" target="_self">Enesehinnang teadmistele</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tekstiilijaeaetmete-probleemi-tosiduse-hinnang" target="_self">Probleemi tõsiduse hinnang</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tekstiilijaeaetmete-probleemi-tosiduse-hinnang" target="_self">Teadlikkus 2025. a. nõudest</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#kov-kommunikatsiooni-selgus" target="_self">KOV kommunikatsiooni selgus</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-teabeallikad" target="_self">Teabeallikate eelistused</a>', unsafe_allow_html=True)
-st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-teabeallikad" target="_self">Hinnang riiklikele juhistele</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tarbijate_teadlikkus" target="_self">Enesehinnang teadmistele</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tekstiilijaeaetmete-probleemi-tosiduse-hinnang" target="_self">Probleemi tõsiduse hinnang</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#tekstiilijaeaetmete-probleemi-tosiduse-hinnang" target="_self">Teadlikkus 2025. a. nõudest</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#kov-kommunikatsiooni-selgus" target="_self">KOV kommunikatsiooni selgus</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-teabeallikad" target="_self">Teabeallikate eelistused</a>', unsafe_allow_html=True)
+#st.sidebar.markdown(f'<a href="{app_path}/{praegune_leht}#eelistatud-teabeallikad" target="_self">Hinnang riiklikele juhistele</a>', unsafe_allow_html=True)
 
 # Leia peakaust
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
