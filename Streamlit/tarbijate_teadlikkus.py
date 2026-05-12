@@ -455,7 +455,7 @@ tab2.dataframe(kommunikatsiooni_selgus,
 #plt.savefig('Documentation/kommunikatsiooni_selgus.png', dpi=300, bbox_inches='tight', facecolor='white')
 plt.close(fig)
 
-st.write('### Maakondlikud erinevused KOV kommunikatsiooni selguses osas')
+st.write('### Maakondlikud erinevused KOV kommunikatsiooni selguse osas')
 
 st.write('Kui vaadelda kommunikatsiooni selgust maakondade lõikes, siis kõige selgema kommunikatsiooniga jääb silma Pärnu maakond. ' \
 'Pärnu maakonnas on kokku 33% neid vastajaid, kes on leidnud, et kommunikatsioon on olnud väga selge või selge, kuid mittetäielik. ' \
