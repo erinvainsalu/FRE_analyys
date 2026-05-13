@@ -358,7 +358,7 @@ Erinevad vanusegrupid tarbivad rõivaid ja kodutekstiile erinevalt. Samuti erine
 
 **Vastajate jaotus vanusegruppide lõikes**
 
-<img alt="jaotus vanusegruppide lõikes" src="Documentation/vanuse_jaotus.png" style="border-radius:15%;"/>
+<img alt="jaotus vanusegruppide lõikes" src="Documentation/vanuse_jaotus.png" style="border-radius:15px;"/>
 
 ### 6.1.2. Vastajate peamine elukoht
 
@@ -366,7 +366,7 @@ Uuringus osalesid inimesed üle Eesti, kuid kõige suurem osa vastajatest elab H
 
 **Vastajate jaotus maakonna lõikes**
 
-<img alt="jaotus maakondade lõikes" src="Documentation/elukoha_jaotus.png" style="border-radius:15%;"/>
+<img alt="jaotus maakondade lõikes" src="Documentation/elukoha_jaotus.png" style="border-radius:15px;"/>
 
 Kuna vastajate esindatus enamuses Eesti maakondades on madal, siis edasise analüüsi käigus koondatakse vähese vastajate hulgaga maakonnad vastusevariandi "Muu" alla.
 
@@ -384,7 +384,7 @@ Uuringus osalejatelt küsiti nende teadlikkust 2025. aasta algul jõustunud sead
 
 **Vastajate jaotus teadlikkuse lõikes**
 
-<img alt="teadlikkus seadusest" src="Documentation/teadlikkus_seadusest.png" style="border-radius:15%;"/>
+<img alt="teadlikkus seadusest" src="Documentation/teadlikkus_seadusest.png" style="border-radius:15px;"/>
 
 ### 6.2.2. Teadmiste hinnangu mõju teadlikkusele
 
@@ -394,7 +394,7 @@ Vastanute hulgas, kes hindavad oma teadmisi väga madalaks või pigem madalaks, 
 
 **Vastajate hinnang teadmistele vs teadlikkus uuest seadusest**
 
-<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/teadlikkus_vs_teadmised.png" style="border-radius:15%;"/>
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/teadlikkus_vs_teadmised.png" style="border-radius:15px;"/>
 
 Enesehinnatud teadmiste ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on 81.4881 (p=0.0000). See ei ole juhus, et vastajad, kes on hinnanud oma teadmiseid kõrgemaks olid teadlikumad uues seadusest, samas kui madalama teadmiste hinnanguga vastajad olid sagedamini teadmatud. Ehk on olemas selge seos enesehinnanguliste teadmiste ning seadusest teadlikkuse vahel.
 
@@ -404,7 +404,7 @@ Enesehinnatud teadmiste ja teadlikkuse vahelise seose hindamiseks viidi läbi hi
 
 **Vastajate jaotus kommunikatsiooni selguse lõikes**
 
-<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsiooni_selgus.png" style="border-radius:15%;"/>
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsiooni_selgus.png" style="border-radius:15px;"/>
 
 ### 6.2.4. Kommunikatsiooni selguse mõju teadlikkusele
 
@@ -412,9 +412,57 @@ Vastustest tuleneb, et vastajatest, kes on hinnanud kommunikatsiooni väga selge
 
 **Kommunikatsiooni selgus vs teadlikkus uuest seadusest**
 
-<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsioon_vs_teadlikkus.png" style="border-radius:15%;"/>
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsioon_vs_teadlikkus.png" style="border-radius:15px;"/>
 
 Kommunikatsiooni selguse ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on 72.9168 (p=0.0000). See ei ole juhus, et vastajad, kes pidasid kommunikatsiooni väga selgeks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes pidasid kommunikatsiooni puudulikuks. Ehk on olemas selge seos kommunikatsiooni selguse ning seadusest teadlikkuse vahel.
+
+## 6.3. Tarbijakäitumine
+
+Oluline on mõista lähemalt tarbijate tänast tekstiilidega seotud käitumisharjumust. Uuringus püüti välja selgitada, mida teeb tarbija täna oma tekstiilidega, mis enam kasutust ei leia ning millised on peamised põhjused esemetest loobumisel.
+
+### 6.3.1. Tänane sorteerimiskäitumine
+
+Uue regulatsiooni kohaselt tuleb tekstiilijäätmeid koguda olmeprügist eraldi. Seetõttu on oluline, et tarbijad mõistaksid tekstiilide liigiti sorteerimise põhimõtteid ning tekstiilide muudest jäätmetest eraldamise vajalikkust. Seetõttu uuriti vastanute harjumusi koduses majapidamises jäätmeid sorteerida.
+
+Uuring näitab, et vastajad sorteerivad jäätmeid üsna aktiivselt. Enamus vastanutest (63%) sorteerib jäätmeid 3-5 erinevas kategoorias ja viiendik (20%) sorteerib üle 5 kategoorias. Vaid 4% vastanutest ei sorteeri jäätmeid üldse, mis on liiga väike grupp, et sellest täiendavaid järeldusi teha.
+
+**Vastajate jaotus sorteerimiskäitumise lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/sorteerimiskaitumine.png" style="border-radius:15px;"/>
+
+### 6.3.2. Peamised väljakutsed sorteerimisel
+
+Väljakutsed indiviidi tasandil tekstiilide sorteerimisel on erinevad, kuid on oluline mõista põhjuseid, et parandada tekstiilide liigiti kogumist. Seetõttu uuriti vastajatelt millised on nende peamised väljakutsed rõivaste ja tekstiilide sorteerimisel. Vastajal oli võimalik valida mitu vastusevarianti ning vajadusel märkida muu ning seda valikut selgitada. Kõige sagedamini valiti korraga 1-2 takistust.
+
+Kõige suuremaks väljakutseks (46%) peavad vastajad kogumiskohtade puudumist mugavas asukohas. Sellele järgnes moraalne side, mis teeb loobumise keerukaks (35%). Valiti ka ajapuudust (32%) ning transpordi keerukust (24%). Kusjuures tõenäoliselt võivad nii ajapuudus kui ka keerukas tranport olla seotud kogumispunktide ebamugava asukohaga. Lisakas toodi välja ebakindlust tekstiilide seisukorra hindmisel (26%) ning keerukaid sorteerimisjuhendeid (18%).
+
+Vabatekstilistes vastustes mainiti sageli, et puudub teadmine, mida teha rõivastega, millel on küll palju kõlblikku materjali, kuid mida enam kanda ei saa - näiteks kulunud jalgevahega teksadega. Samuti tõid vastajad välja murekohana, et täis riidekonteinerid takistavad asjade äraandmist ning nenditi, et teadmatus esemete saatuse üle on ebakindlust tekitav. Enim aga toodi välja, et puudub konkreetne koht, kuhu viia kulunud, määrdunud ja kasutuskõlbmatud rõivad ja tekstiilid.
+
+**Vastajate jaotus peamiste väljakutsete lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/valjakutsed.png" style="border-radius:15px;"/>
+
+### 6.3.3. Toimimine mittevajalike rõivaste ja tekstiilidega
+
+Mõistmaks, kuidas tarbija käitub kasutuskõlbulike rõivaste ja kodutekstiilidega, mida ta enam ei vaja, küsiti uuringus osalejatelt valikvastuste ja vabas vormis vastuse esitamise võimalusega mida vastajad selliste tekstiilidega ette võtavad. Kõige sagedamini valiti korraga 3-4 põhjust, mis näitab, et korraga esineb mitu moodust kasutuskõlbulikest tekstiilidest loobumisel ja inimesed ei eelista ühte konkreetset viisi.
+
+Enamus vastanutest (82%) viib kasutuskõlblikud tekstiilid avalikesse kogumiskastidesse ja 72% annab need edasi perele või tuttavatele. Veebis teisel ringil müümine (51%) ja ise tuunimine ning ümber tegemine (32%) on samuti levinud, mis näitab mitmekesiseid loobumisviise ja keskkonnateadlikku lähenemist. Viimasele viitab ka see, et kõige sagedamini valiti koos vastusevariante: “müün veebis”, “annan perele/tuttavatele” ja “teen ise ümber”.
+
+Samas on 36% vastajatest toonud välja, et nad viskavad kasutuskõlbulikud tekstiilid segaolmejäätmetesse. Vabatekstilistest vastustest tuleb välja, et sageli on tegemist katkiste ning määrdunud asjadega ehk tegelikult kasutuskõlbmatute rõivaste ja tekstiilidega. Nenditi, et kuigi linnapildis on nähtud ja teatakse kantavate ja korralike riiete ning tekstiilide kogumispunkte, siis ei teata kuhu viia kasutuskõlbmatuid asju. Ära visatavate esemetena toodi kõige enam välja just sokke ning aluspesu. Ehk vastustest tuleb välja, et olmeprügisse visatakse esemeid parema lahenduse või info puudumise tõttu. Tuntakse muret ning huvi, mida teha just mainitud aluspesu ning sokkidega, mis liigituvad tekstiilijäätmeks, aga ei saa liikuda edasi teisele ringile oma esialgsel kujul. See annab tugeva indikatsiooni parandada riigi ja KOV-ide kommunikatsiooni seoses tekstiilijäätmete sorteerimisega.
+
+**Käitumine mittevajalikest tekstiilidest loobumisel**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kasutuskolblikud_tekstiilid.png" style="border-radius:15px;"/>
+
+### 6.3.4. Kasutuskõlbmatutest tekstiilidest loobumise viisid
+
+Selleks, et mõista kuidas tarbijad hetkel kasutuskõlbmatute tekstiilidega toimivad, küsiti kuhu peamiselt viiakse kasutuskõlbmatud rõivad ja tekstiilid. Vastajal oli võimalik valida mitu vastusevarianti ning oma vastuseid vabatekstiväljal täpsustada. Kõige enam valiti korraga vaid 1 sobiv variant.
+
+Vastustes joonistub välja, et inimestel ei ole ühte selget viisi, mil moel kasutuskõlbmatute tekstiilidega kõige targemini toimetada. Ülekaalukalt kõige sagedamini valiti segaolmejäätmete konteineritesse viimist (57%), mis ei ole nõuetekohane ega ka keskkonnasõbralik lahendus, kuid mis oli lubatud praktika enne 2025. aasta jaanuari. Rõivakonteineritesse viimine (36%) on samuti levinud, kuigi neisse konteineritesse oodatakse vaid kasutuskõlbulikke rõivaid ja tekstiile. Jäätmejaama viib ainult 14%, mis on õige viis, kuid selgelt alakasutatud. See näitab vajadust parema info järele kasutuskõlbmatute tekstiilide käitlemise kohta.
+
+** Vastajate jaotus kasutuskõlbmatutest tekstiilidest loobumise viiside alusel**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kasutuskolbmatud_tekstiilid.png" style="border-radius:15px;"/>
 
 # 7. Kokkuvõte
 

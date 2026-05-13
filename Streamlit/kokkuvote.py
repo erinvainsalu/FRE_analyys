@@ -236,4 +236,4 @@ st.write('- Tõsta nooremate vanusegruppide teadlikkust läbi suunatud teavitust
 st.write('- Kommunikeerida senisest oluliselt selgemalt ning praktiliste näidete varal tekstiiljäätmete eraldi sorteerimise ning kogumise nõude sisu ning juhiseid selle rakendamiseks.')
 st.write('- Viia läbi kampaaniaid, mis pakuvad osalejale motiveerivat tasu (nt sooduskupong) rõivaste ja tekstiilide ringlusse saatmisel.')
 st.write('- Kogumissüsteemi loomisel võtta arvesse tarbijate vajadust kodulähedaste ja/või sagedasti külastatavates asukohtades asuvate kogumispunktide järele.')
-st.write('- Teostada kordusuuring, kuhu on kaasatud mitmekesisemate demograafiliste näitajatega tarbijad.')
+st.write('- Teostada kordusuuring, kuhu on kaasatud mitmekesisemate demograafiliste näitajatega.')
