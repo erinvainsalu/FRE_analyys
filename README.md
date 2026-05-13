@@ -460,10 +460,61 @@ Selleks, et mõista kuidas tarbijad hetkel kasutuskõlbmatute tekstiilidega toim
 
 Vastustes joonistub välja, et inimestel ei ole ühte selget viisi, mil moel kasutuskõlbmatute tekstiilidega kõige targemini toimetada. Ülekaalukalt kõige sagedamini valiti segaolmejäätmete konteineritesse viimist (57%), mis ei ole nõuetekohane ega ka keskkonnasõbralik lahendus, kuid mis oli lubatud praktika enne 2025. aasta jaanuari. Rõivakonteineritesse viimine (36%) on samuti levinud, kuigi neisse konteineritesse oodatakse vaid kasutuskõlbulikke rõivaid ja tekstiile. Jäätmejaama viib ainult 14%, mis on õige viis, kuid selgelt alakasutatud. See näitab vajadust parema info järele kasutuskõlbmatute tekstiilide käitlemise kohta.
 
-** Vastajate jaotus kasutuskõlbmatutest tekstiilidest loobumise viiside alusel**
+**Vastajate jaotus kasutuskõlbmatutest tekstiilidest loobumise viiside alusel**
 
 <img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kasutuskolbmatud_tekstiilid.png" style="border-radius:15px;"/>
 
+## 6.4. Valmisolek esemete eraldi sorteerimiseks
+
+Rõivaste edasise müügi ja ümbertöötluse edukus sõltub esmasest sorteerimisest ehk sellest, kas tarbija on valmis tekstiile enne loobumist sorteerima. Seetõttu uuriti, kas vastajad oleksid valmis kasutama mitut erinevat konteinerit või kogumispunkti sõltuvalt eseme kategooriast (nt kasutuskõlblik, parandatav, kasutuskõlmatu). 86% vastajatest väljendas valmisolekut tekstiile sorteerida: 38% oleks valmis sorteerima juhul, kui juhised on selged, 25% kui kogumispunktid on mugavas asukohas, 23% on juba praegu valmis sorteerima ilma tingimusteta. Vaid 10% märkis, et nad eelistavad ühe konteineri lahendust. 3% ei osanud enda eelistust välja tuua. Need tulemused viitavad, et suurem osa takistustest ei ole tarbijate motivatsioonis, vaid pigem süsteemi mugavuses ja selguses.
+
+**Vastajate jaotus valmisoleku lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/valmisolek.png" style="border-radius:15px;"/>
+
+#### 6.4.1. Sorteerimiskäitumise mõju valmisolekule
+
+Kõige kõrgem valmisolek sorteerida ilma tingimusteta on nende vastajate seas, kes sorteerivad jäätmeid enam kui viide kategooriasse või järgivad nullkulu eluviisi. Vähematesse kategooriatesse sorteerijate seas muutuvad tingimused olulisemaks. Näiteks 3-5 kategoorias sorteerijatest 41%-le on oluline, et juhised oleksid selged ja <3 kategoorias sorteerijatest 36% sorteeriks tekstiile eraldi siis, kui kogumispunktid on mugavas asukohas.
+
+Ka mittesorteerijate hulgas sõltub valmisolek peamiselt mugavusest ja selgusest - võrdselt 27% tõi välja vajaduse selgete juhiste ja mugavate kogumispunktide järele. Samas oli mittesorteerijate hulgas ka 27% neid, kes ei ole nõus tekstiile sorteerima ning eelistavad hoopis ühte universaalset konteinerit. Sellest saab järeldada, et keskkonnateadlikumad tarbijad on valmis uusi jätkusuutlikke lahendusi kiiremini omaks võtma.
+
+**Valmisolek sorteerimiskäitumise lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/sorteerimine_valmisolek.png" style="border-radius:15px;"/>
+
+## 6.5. Eelistatud kogumisviisid
+
+Kogumisvõrgustiku loomiseks on oluline välja selgitada, millised on tarbijate poolt eelistatud kogumisviisid, võttes arvesse vastaja tänast elukorraldust ja -stiili. Vastajatel paluti valida endale sobivaim viis rõivastest loobumiseks eeldusel, et kõik järgnevad valikud on võrdselt võimalikud, kättesaadavad ja tasuta.
+
+Valikvastustest joonistub välja, et nõuetekohane variant kasutuskõlbmatud tekstiilid jäätmejaama viia ei ole tarbijate esmane valik. Selle variandi valis vaid 10% vastajatest. See viitab tõsisele lõhele hetkel pakutava ja tarbijate soovitud lahenduse vahel.
+
+Kõige populaarsemad on linnas paiknevad püsivad kogumispunktid, mida eelistas 39% vastajatest. Suur toetus (30%) oli ka kaubanduspindadel asuvatele kogumispunktidele. Need kaks varianti kokku moodustavad 69% eelistustest, mis näitab, et eelistatakse kogumispunkte, mis on lihtsalt ligipääsetavad ning asuvad igapäevategevuste käigus tihti külastatavas asukohas. Regulaarsed kogunädalad kodukandis said 12% toetust, mobiilsed ukselt-uksele kogumisautod 6% ja muud variandid 3%.
+
+**Vastajate jaotus eelistatud kogumisviiside lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kogumisviisi_eelistused.png" style="border-radius:15px;"/>
+
+### 6.5.1. Vanuselised erinevused eelistustes
+
+Vanuserühmade võrdlus paljastab olulisi erinevusi. Vanuserühmad 18-64 näitavad kõige suuremat huvi linnas paiknevate püsivate kogumispunktide vastu, kusjuures vanusegrupis 18-29 oli see eelistus ülekaalukalt suurim (50%). Kõige vanem vanuserühm (64+) eristub selgelt, kuna eelistab oluliselt rohkem mobiilseid ukselt-uksele kogumisautosid (31%) võrreldes teiste vanuserühmadega, kus see näitaja jääb 5-14% vahele. See viitab vanemaealiste suuremale vajadusele mugavuse ja ligipääsetavuse järele.
+
+**Eelistatud kogumisviisid vanuse lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kogumisviis_vanus.png" style="border-radius:15px;"/>
+
 # 7. Kokkuvõte
 
-TBD
+## 7.1. Järeldused
+- Eestis on olemas tugev tarbijate valmisolek tekstiilide liigiti kogumiseks ja ringluseks.
+- Eduka süsteemi peamised eeldused on selged juhised, mugavalt ligipääsetavad kogumispunktid ja usaldusväärne kommunikatsioon.
+- Praegune kommunikatsioon ei anna tarbijatele piisavalt praktilist infot tekstiilide seisukorra hindamise ning käitlemise kohta.
+- Tarbijad eelistavad igapäevases liikumisteekonnas paiknevaid kogumispunkte ning ei pea jäätmejaamu esmaseks lahenduseks.
+- Nooremad vanusegrupid vajavad sihitud teadlikkuse tõstmist, eriti seoses ultrakiirmoe tarbimise ja tekstiilijäätmete mõjuga.
+
+## 7.2. Soovitused
+
+- Tõsta nooremate vanusegruppide teadlikkust läbi suunatud teavitustegevuse.
+- Kommunikeerida senisest oluliselt selgemalt ning praktiliste näidete varal tekstiiljäätmete eraldi sorteerimise ning kogumise nõude sisu ning juhiseid selle rakendamiseks.
+- Viia läbi kampaaniaid, mis pakuvad osalejale motiveerivat tasu (nt sooduskupong) rõivaste ja tekstiilide ringlusse saatmisel.
+- Kogumissüsteemi loomisel võtta arvesse tarbijate vajadust kodulähedaste ja/või sagedasti külastatavates asukohtades asuvate kogumispunktide järele.
+- Teostada kordusuuring, kuhu on kaasatud mitmekesisemate demograafiliste näitajatega.
