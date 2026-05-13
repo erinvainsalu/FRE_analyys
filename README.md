@@ -358,9 +358,7 @@ Erinevad vanusegrupid tarbivad rõivaid ja kodutekstiile erinevalt. Samuti erine
 
 **Vastajate jaotus vanusegruppide lõikes**
 
-[Jaotus vanusegruppide lõikes](Documentation/vanuse_jaotus.png "Jaotus vanusegruppide lõikes")
-
-<img alt="jaotus vanusegruppide lõikes" src="Documentation/vanuse_jaotus.png" />
+<img alt="jaotus vanusegruppide lõikes" src="Documentation/vanuse_jaotus.png" style="border-radius:15%;"/>
 
 ### 6.1.2. Vastajate peamine elukoht
 
@@ -368,15 +366,55 @@ Uuringus osalesid inimesed üle Eesti, kuid kõige suurem osa vastajatest elab H
 
 **Vastajate jaotus maakonna lõikes**
 
+<img alt="jaotus maakondade lõikes" src="Documentation/elukoha_jaotus.png" style="border-radius:15%;"/>
+
 Kuna vastajate esindatus enamuses Eesti maakondades on madal, siis edasise analüüsi käigus koondatakse vähese vastajate hulgaga maakonnad vastusevariandi "Muu" alla.
 
-### 6.1.3. Vanuselised erinevused maakondade lõikes
+## 6.2. Tarbijateadlikkus
 
-Vastajate vanuseline jaotus erinevates maakondades on maakondade lõikes sarnane. Kõige enam vastajaid on vanusegrupis 30-49 (48-65%). Järgnevad vastajad vanusegruppides 18-29 ja 50-64. Erandiks on Järvamaa, kus enamus vastajaid on vanusegrupist <18 (74%).
+Teadlikkus annab ülevaate tarbijate teadmistest, hoiakutest ja käitumisest, mis on seotud nende ostuotsuste ja tarbimisviiside mõjuga keskkonnale ning ühiskonnale. Tarbijate teadlikkus rõivaste tarbimisega seotud keskkonna ja sotsiaalsetest mõjudest on oluline aspekt nende ostukäitumise ja tekstiilide tarbimisharjumuste kujundamisel.
 
-**Vastajate vanuseline jaotus maakonna lõikes**
+Uuringu kohaselt peab antud teemal enda teadmisi väga madalaks või pigem madalaks 12% vastajatest. Enda teadmisi pigem heaks või väga heaks hindab 52% vastajatest. Tulemuste hindamisel tuleb arvesse võtta, et kuna küsitlust jagati kanalites, mille kaudu tarbivad infot pigem keskmisest teadlikumad tarbijad, siis vastused ei pruugi peegeldada Eesti keskmist inimest.
 
-[This is an alt text.](/image/Markdown-mark.svg "This is a sample image.")
+Seoses ületootmise ja kiirmoe ärimudeliga on tekstiilijäätmete probleem on kasvav kogu maailmas, sh Eestis. Sellega seoses paluti tarbijatel hinnata tekstiilijäätmete probleemi tõsidust Eestis ja globaalses mastaabis. Üle poole ehk 58% vastanutest peab tekstiilijäätmete probleemi väga tõsiseks ja 23% peab probleemi pigem tõsiseks. Neid, kes probleemi üldse ei tunnistanud, oli vastajate seas vaid 1%.
+
+### 6.2.1. Teadlikkus 2025. aastal Eestis kehtima hakanud seadusest
+
+Uuringus osalejatelt küsiti nende teadlikkust 2025. aasta algul jõustunud seadusest. Jõustunud seadusest oli teadlik 252 vastajat (39%), kusjuures 1% nendest leidis, et tegemist on valitsuse ja KOV-ide, mitte tarbijate probleemiga. Ülejäänud 61% vastanutest jagunesid nendeks, kes ei ole seadusest teadlikud (28%) ning nendeks, kes on küll seadusest kuulnud, aga ei ole teadlikud detailidest (33%). Kuigi 72% vastajatest on vähemalt ühel või teisel moel jõustunud seadusest kuulnud, siis siiski on palju teadmatust seoses seaduse ja selle täitmise üksikasjadega.
+
+**Vastajate jaotus teadlikkuse lõikes**
+
+<img alt="teadlikkus seadusest" src="Documentation/teadlikkus_seadusest.png" style="border-radius:15%;"/>
+
+### 6.2.2. Teadmiste hinnangu mõju teadlikkusele
+
+Vastajatest, kes hindavad oma teadmisi väga heaks, on 64% teadlikud uuest seadusest. Kõigis enesehinnangu gruppides leidub 25-37% neid, kes on seadusest kuulnud, kuid ei ole täpsemalt kursis selle sisuga.
+
+Vastanute hulgas, kes hindavad oma teadmisi väga madalaks või pigem madalaks, on uuest seadusest teadlikke 53-63%. Kusjuures, väga madalate enesehinnanguliste teadmistega vastajate hulgas on 0% seadusest teadlikke.
+
+**Vastajate hinnang teadmistele vs teadlikkus uuest seadusest**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/teadlikkus_vs_teadmised.png" style="border-radius:15%;"/>
+
+Enesehinnatud teadmiste ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on 81.4881 (p=0.0000). See ei ole juhus, et vastajad, kes on hinnanud oma teadmiseid kõrgemaks olid teadlikumad uues seadusest, samas kui madalama teadmiste hinnanguga vastajad olid sagedamini teadmatud. Ehk on olemas selge seos enesehinnanguliste teadmiste ning seadusest teadlikkuse vahel.
+
+### 6.2.3. KOV kommunikatsiooni selgus
+
+Üle poole vastanutest ehk 436 inimest (65%) pidas KOV-ide kommunikatsiooni seoses 2025. aasta alguses kehtima hakanud tekstiilide liigiti kogumise nõudega puudulikuks. 116 vastajat (17%) pidas kommunikatsiooni arusaamatuks ning 102 (15%) leidis, et kommunikatsioon on olnud "Selge, kuid mittetäielik". Kõigest 14 inimest ehk 2% vastajatest peab KOV-ide kommunikatsiooni väga selgeks.
+
+**Vastajate jaotus kommunikatsiooni selguse lõikes**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsiooni_selgus.png" style="border-radius:15%;"/>
+
+### 6.2.4. Kommunikatsiooni selguse mõju teadlikkusele
+
+Vastustest tuleneb, et vastajatest, kes on hinnanud kommunikatsiooni väga selgeks, on 71% öelnud, et nad on teadlikud 2025. aastal kehtima hakanud nõudest. Samas on nende hulgas, kes pidasid kommunikatsiooni väga selgeks, 21% neid vastajaid, kes ei ole uuest nõudest teadlikud. Siiski on suurem hulk neid vastajaid, kes on hinnanud kommunikatsiooni puudulikuks või arusaamatuks ning kes ei ole üldse teadlikud uuest nõudest. Vastajate grupis, kes pidas kommunikatsiooni puudulikuks, on mitteteadlikke 37% ja kommunikatsiooni arusaamatuks pidanud grupis 19%.
+
+**Kommunikatsiooni selgus vs teadlikkus uuest seadusest**
+
+<img alt="hinnang teadmistele vs teadlikkus uuest seadusest" src="Documentation/kommunikatsioon_vs_teadlikkus.png" style="border-radius:15%;"/>
+
+Kommunikatsiooni selguse ja teadlikkuse vahelise seose hindamiseks viidi läbi hi-ruuttest. Tulemused näitavad statistiliselt olulist seost - hii-ruut-statistiku väärtuseks on 72.9168 (p=0.0000). See ei ole juhus, et vastajad, kes pidasid kommunikatsiooni väga selgeks olid teadlikumad uuest seadusest, seadusest ei olnud teadlikud vastajad, kes pidasid kommunikatsiooni puudulikuks. Ehk on olemas selge seos kommunikatsiooni selguse ning seadusest teadlikkuse vahel.
 
 # 7. Kokkuvõte
 
